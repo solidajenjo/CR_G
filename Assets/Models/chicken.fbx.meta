@@ -1,0 +1,209 @@
+fileFormatVersion: 2
+guid: d202f05095c954b4b94f44b3257728b6
+timeCreated: 1511089804
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Armature
+    100002: BODY
+    100004: Bone
+    100006: Bone.007
+    100008: Bone.007_end
+    100010: Bone.010
+    100012: Bone.010_end
+    100014: Bone_end
+    100016: //RootNode
+    100018: CRESTA
+    100020: CRESTA 1
+    100022: CRESTA_end
+    100024: HEAD
+    100026: HEAD 1
+    100028: LEFT_LEG
+    100030: LEFT_LEG1
+    100032: LEFT_LEG2
+    100034: LEFT_LEG3
+    100036: LEFT_SHOULDER
+    100038: LEFT_WING
+    100040: LEFT_WING 1
+    100042: LEFT_WING_end
+    100044: RIGHT_LEG
+    100046: RIGHT_LEG1
+    100048: RIGHT_LEG2
+    100050: RIGHT_LEG3
+    100052: RIGHT_SHOULDER
+    100054: RIGHT_WING
+    100056: RIGHT_WING 1
+    100058: RIGHT_WING_end
+    400000: Armature
+    400002: BODY
+    400004: Bone
+    400006: Bone.007
+    400008: Bone.007_end
+    400010: Bone.010
+    400012: Bone.010_end
+    400014: Bone_end
+    400016: //RootNode
+    400018: CRESTA
+    400020: CRESTA 1
+    400022: CRESTA_end
+    400024: HEAD
+    400026: HEAD 1
+    400028: LEFT_LEG
+    400030: LEFT_LEG1
+    400032: LEFT_LEG2
+    400034: LEFT_LEG3
+    400036: LEFT_SHOULDER
+    400038: LEFT_WING
+    400040: LEFT_WING 1
+    400042: LEFT_WING_end
+    400044: RIGHT_LEG
+    400046: RIGHT_LEG1
+    400048: RIGHT_LEG2
+    400050: RIGHT_LEG3
+    400052: RIGHT_SHOULDER
+    400054: RIGHT_WING
+    400056: RIGHT_WING 1
+    400058: RIGHT_WING_end
+    4300000: LEFT_LEG
+    4300002: LEFT_WING
+    4300004: RIGHT_WING
+    4300006: BODY
+    4300008: RIGHT_LEG
+    4300010: HEAD
+    4300012: CRESTA
+    7400000: Armature|ArmatureAction
+    9500000: //RootNode
+    13700000: BODY
+    13700002: CRESTA
+    13700004: HEAD
+    13700006: LEFT_LEG
+    13700008: LEFT_WING
+    13700010: RIGHT_LEG
+    13700012: RIGHT_WING
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CRESTA_MAT
+    second: {fileID: 2100000, guid: d7321a0b40c98c84598d5c9da7a4dc5d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EYES_MAT
+    second: {fileID: 2100000, guid: 6918e220633cfed4cb602be762cd13b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FEATHERS_MAT
+    second: {fileID: 2100000, guid: 3cc21dca1477f234f906cb8ac245cfb9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PICO_MAT
+    second: {fileID: 2100000, guid: 384f2788e543ecf47868c237542f28e5, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Armature|ArmatureAction
+      takeName: Armature|ArmatureAction
+      firstFrame: 0
+      lastFrame: 21
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
