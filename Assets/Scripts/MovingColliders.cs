@@ -21,7 +21,6 @@ public class MovingColliders : MonoBehaviour {
     }
     void OnTriggerStay(Collider other)
     {
-        Debug.Log(other.tag);
         if (other.tag == "obstacle")
         {            
             blocked = true;
