@@ -16,7 +16,7 @@ public class Player : MonoBehaviour {
     public Animator anim;
     private float movementTimer;
     private int moving;
-    private Quaternion originalRot, finalRot, leftRot, forwardRot, rightRot, backRot, previousRot;
+    private Quaternion originRot, finalRot, leftRot, forwardRot, rightRot, backRot, previousRot;
     private Vector3 origin, destination;
     public Transform translator;
     private float journeyLength, startTime;
@@ -54,6 +54,7 @@ public class Player : MonoBehaviour {
             if (Input.GetKey("up") && directions[0])
             {
                 moving = (int)Movements.MOVING_FORWARD;
+                originRot = transform.rotation;
                 finalRot = forwardRot;
                 movementTimer = durationOfMovement;
                 anim.SetBool("moving", true);
@@ -66,6 +67,7 @@ public class Player : MonoBehaviour {
             if (Input.GetKey("left") && directions[3])
             {
                 moving = (int)Movements.MOVING_LEFT;
+                originRot = transform.rotation;
                 finalRot = leftRot;
                 movementTimer = durationOfMovement;
                 anim.SetBool("moving", true);
@@ -78,6 +80,7 @@ public class Player : MonoBehaviour {
             if (Input.GetKey("right") && directions[1])
             {
                 moving = (int)Movements.MOVING_RIGHT;
+                originRot = transform.rotation;
                 finalRot = rightRot;
                 movementTimer = durationOfMovement;
                 anim.SetBool("moving", true);
@@ -90,6 +93,7 @@ public class Player : MonoBehaviour {
             if (Input.GetKey("down") && directions[2])
             {
                 moving = (int)Movements.MOVING_BACK;
+                originRot = transform.rotation;
                 finalRot = backRot;
                 movementTimer = durationOfMovement;
                 anim.SetBool("moving", true);
@@ -102,7 +106,7 @@ public class Player : MonoBehaviour {
         }
         else
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, finalRot, Time.deltaTime * rotSpeed);
+            transform.rotation = Quaternion.Slerp(originRot, finalRot, (Time.time - startTime) * rotSpeed);
             float distCovered = (Time.time - startTime) * speed;
             float fracJourney = distCovered / journeyLength;
             translator.position = Vector3.Lerp(origin, destination, fracJourney);

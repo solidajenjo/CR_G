@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\ScenarioDestroyer.cs" />
      <Compile Include="Assets\Scripts\ScenarioSpawner.cs" />
+     <None Include="Assets\Shaders\WaterShader.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
