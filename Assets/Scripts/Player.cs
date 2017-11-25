@@ -22,6 +22,7 @@ public class Player : MonoBehaviour {
     private float journeyLength, startTime;
     public MovingColliders[] colliders;
     private bool[] directions = { false, false, false, false };
+    public ScenarioSpawner scenarioSpawn;
 
     void Start () {
         moving = (int)Movements.STILL;
@@ -118,6 +119,10 @@ public class Player : MonoBehaviour {
             if (movementTimer <= 0)
             {
                 moving = (int)Movements.STILL;
+                if (scenarioSpawn.getFloorMaterial((int)transform.position.z) == "water")
+                {
+                    Debug.Log("COMPROBAR QUE ESTA ENCIMA DE UN TRONCO!! O MORIR");
+                }
             }
         }
     }

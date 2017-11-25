@@ -14,11 +14,7 @@ public class ScenarioDestroyer : MonoBehaviour {
 		
 	}
     void OnTriggerEnter(Collider other)
-    {
-        Debug.Log(other.tag);
-        if (other.tag == "floor")
-        {
-            Destroy(other.gameObject);
-        }
+    {        
+        Destroy(other.gameObject);        
     }
 }
