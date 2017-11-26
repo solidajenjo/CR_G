@@ -64,7 +64,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _InvFade: 3
-    - _Metallic: 0.74
+    - _Metallic: 0.13
     - _Mode: 3
     - _OcclusionStrength: 1
     - _Parallax: 0.02

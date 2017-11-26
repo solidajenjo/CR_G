@@ -60,6 +60,10 @@
      <Compile Include="Assets\Scripts\Train.cs" />
      <Compile Include="Assets\Scripts\TrainLamp.cs" />
      <Compile Include="Assets\Scripts\TrainSpawn.cs" />
+     <Compile Include="Assets\Scripts\Tronco.cs" />
+     <Compile Include="Assets\Scripts\TroncoSpawn.cs" />
+     <Compile Include="Assets\Scripts\WaterDrop.cs" />
+     <Compile Include="Assets\Scripts\WaterSplash.cs" />
      <None Include="Assets\Shaders\WaterShader.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

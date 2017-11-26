@@ -15,7 +15,7 @@ public class Humo : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         transform.Translate(0.0f, speed * Time.deltaTime, 0.0f);
-        transform.localScale = new Vector3(transform.localScale.x + Time.deltaTime, transform.localScale.y + Time.deltaTime, transform.localScale.z + Time.deltaTime);
+        transform.localScale = new Vector3(transform.localScale.x + Time.deltaTime * 6, transform.localScale.y + Time.deltaTime * 6, transform.localScale.z + Time.deltaTime);
         timer -= Time.deltaTime;
         if (timer <= 0)
         {

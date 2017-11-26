@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4739389925137648}
   - component: {fileID: 114236600607230076}
   - component: {fileID: 54115547064170130}
+  - component: {fileID: 65748661856022240}
   m_Layer: 0
   m_Name: train
   m_TagString: Untagged
@@ -544,6 +545,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65748661856022240
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1235086328761088}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.99, y: 7.81, z: 2.74}
+  m_Center: {x: -16.19, y: 0, z: 0}
 --- !u!114 &114236600607230076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -556,7 +569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: -150
-  timeToLive: 5
+  timeToLive: 3
 --- !u!114 &114967264147872304
 MonoBehaviour:
   m_ObjectHideFlags: 1

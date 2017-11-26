@@ -18,4 +18,13 @@ public class Train : MonoBehaviour {
         timer -= Time.deltaTime;
         if (timer <= 0) Destroy(gameObject);
 	}
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "trainLamp")
+        {
+            TrainLamp lamp = other.GetComponent<TrainLamp>();
+            lamp.setLightOn();
+        }
+    }
 }
