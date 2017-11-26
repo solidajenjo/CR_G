@@ -303,7 +303,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1.5
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -312,7 +312,7 @@ Light:
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
-    m_Bias: 0.05
+    m_Bias: 0
     m_NormalBias: 0
     m_NearPlane: 0.2
   m_Cookie: {fileID: 0}
@@ -322,7 +322,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
@@ -683,12 +683,12 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.000001
+  near clip plane: 0.1
   far clip plane: 1000
-  field of view: 60
+  field of view: 42
   orthographic: 1
-  orthographic size: 27.27
-  m_Depth: -1
+  orthographic size: 25.41
+  m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -708,13 +708,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 518933257}
-  m_LocalRotation: {x: 0.37222496, y: -0.11777461, z: 0.0036458368, w: 0.92063266}
-  m_LocalPosition: {x: 14.8, y: 39.6, z: -41}
+  m_LocalRotation: {x: 0.36146176, y: -0.09370424, z: 0.023330586, w: 0.927373}
+  m_LocalPosition: {x: 21.9, y: 58.4, z: -50.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 351322354}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 43.332, y: -17.121, z: -6.3910003}
+  m_LocalEulerAnglesHint: {x: 42.438004, y: -12.277, z: -1.9000001}
 --- !u!1001 &537255457
 Prefab:
   m_ObjectHideFlags: 0
