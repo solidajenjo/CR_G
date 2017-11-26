@@ -6,13 +6,14 @@ public class ScenarioSpawner : MonoBehaviour {
 
     public Rigidbody[] lanes;
     public Rigidbody[] obstacles;
+    public Rigidbody trainSpawner;
     private float lastZ;
     private int lastLane;
     public int sizeOfLane, obstacleSpawnPossibility;
     private int[] materialOfTheLane;
     enum LaneTypes
     {
-        GRASS, WATER, ROAD
+        GRASS, WATER, ROAD, RAILROAD
     };
     // Use this for initialization
     void Start () {
@@ -43,13 +44,14 @@ public class ScenarioSpawner : MonoBehaviour {
             }
             if (lastZ < newPos.z)
             {
-                int type = Random.Range(0, sizeof(LaneTypes) - 1);
-                while (type == lastLane) type = Random.Range(0, sizeof(LaneTypes) - 1); //Force alternance between lanes
+                int type = Random.Range(0, 4);
+                while (type == lastLane) type = Random.Range(0, 4); //Force alternance between lanes
                 lastLane = type;
+                Debug.Log("T " + type);
                 int amount = Random.Range(3, 6);
                 if (type == (int)LaneTypes.GRASS || type == (int)LaneTypes.WATER)
                 {
-                    if (type == (int)LaneTypes.GRASS) newPos.y = 0.5f;                        
+                    if (type == (int)LaneTypes.GRASS) newPos.y = 0.5f;
                     else newPos.y = -0.5f;
                     Vector3 increment = new Vector3(0.0f, 0.0f, 10.0f);
                     for (int i = 0; i < amount; ++i)
@@ -60,14 +62,13 @@ public class ScenarioSpawner : MonoBehaviour {
                         {
                             newPos.y = 0.5f;
                             int leftMargin = (int)(transform.position.x - sizeOfLane / 2);
-                            int rightMargin = (int)(transform.position.x + sizeOfLane / 2);                    
+                            int rightMargin = (int)(transform.position.x + sizeOfLane / 2);
                             for (int j = leftMargin; j < rightMargin; j += 10)
                             {
                                 int spawnPossibility = Random.Range(0, 100);
                                 if (spawnPossibility < obstacleSpawnPossibility)
                                 {
-                                    int which = Random.Range(0, obstacles.Length - 1);
-                                    Debug.Log(which+" "+j);
+                                    int which = Random.Range(0, obstacles.Length - 1);        
                                     Instantiate(obstacles[which], new Vector3((float)j, 0.0f, (newPos + increment * i).z), transform.rotation);
                                 }
                             }
@@ -80,16 +81,34 @@ public class ScenarioSpawner : MonoBehaviour {
                     Vector3 increment = new Vector3(0.0f, 0.0f, 10.0f);
                     newPos.y = 0.0f;
                     Instantiate(lanes[2], newPos, transform.rotation);
-                    materialOfTheLane[((int)(newPos).z % 100) / 10] = type;                    
+                    materialOfTheLane[((int)(newPos).z % 100) / 10] = type;
                     for (int i = 1; i < amount - 1; ++i)
                     {
                         Instantiate(lanes[3], newPos + increment * i, transform.rotation);
-                        materialOfTheLane[((int)(newPos + increment * i).z % 100) / 10] = type;                        
+                        materialOfTheLane[((int)(newPos + increment * i).z % 100) / 10] = type;
                     }
                     Instantiate(lanes[4], newPos + increment * (amount - 1), transform.rotation);
-                    materialOfTheLane[((int)(newPos + increment * (amount - 1)).z % 100) / 10] = type;                    
+                    materialOfTheLane[((int)(newPos + increment * (amount - 1)).z % 100) / 10] = type;
                     lastZ = newPos.z + increment.z * (amount - 1);
-                }                
+                }
+                else if (type == (int)LaneTypes.RAILROAD)
+                {
+                    newPos.y = -3.0f;
+                    Quaternion rot = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+                    int leftMargin = (int)(transform.position.x - sizeOfLane / 2);
+                    int rightMargin = (int)(transform.position.x + sizeOfLane / 2);
+                    Vector3 trainSpawnPos = newPos;
+                    trainSpawnPos.x = leftMargin;
+                    trainSpawnPos.y = 8.5f;
+                    Instantiate(trainSpawner, trainSpawnPos, rot);
+                    for (int j = leftMargin; j < rightMargin; j += 40)
+                    {
+                        newPos.x = j;
+                        Instantiate(lanes[5], newPos, rot);
+                    }                    
+                    materialOfTheLane[((int)(newPos.z) % 100) / 10] = type;                    
+                    lastZ = newPos.z;
+                }
             }
         }
     }
