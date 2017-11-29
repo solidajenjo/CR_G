@@ -6,7 +6,7 @@ public class ScenarioSpawner : MonoBehaviour {
 
     public Rigidbody[] lanes;
     public Rigidbody[] obstacles;
-    public Rigidbody trainSpawner, troncoSpawner;
+    public Rigidbody trainSpawner, troncoSpawner, carSpawner;
     private float lastZ;
     private int lastLane;
     public int sizeOfLane, obstacleSpawnPossibility;
@@ -94,15 +94,24 @@ public class ScenarioSpawner : MonoBehaviour {
                 {
                     Vector3 increment = new Vector3(0.0f, 0.0f, 10.0f);
                     newPos.y = 0.0f;
+                    int leftMargin = (int)(transform.position.x - sizeOfLane / 2);
                     Instantiate(lanes[2], newPos, transform.rotation);
+                    Vector3 carSpawnPos = newPos;
+                    carSpawnPos.x = leftMargin;
+                    carSpawnPos.y = 4.5f;
+                    Instantiate(carSpawner, carSpawnPos, Quaternion.Euler(0.0f, 90.0f, 0.0f));
                     materialOfTheLane[((int)(newPos).z % 1000) / 10] = type;
                     for (int i = 1; i < amount - 1; ++i)
                     {
                         Instantiate(lanes[3], newPos + increment * i, transform.rotation);
                         materialOfTheLane[((int)(newPos + increment * i).z % 1000) / 10] = type;
+                        carSpawnPos = carSpawnPos + increment;
+                        Instantiate(carSpawner, carSpawnPos, Quaternion.Euler(0.0f, 90.0f, 0.0f));
                     }
                     Instantiate(lanes[4], newPos + increment * (amount - 1), transform.rotation);
                     materialOfTheLane[((int)(newPos + increment * (amount - 1)).z % 1000) / 10] = type;
+                    carSpawnPos = carSpawnPos + increment;
+                    Instantiate(carSpawner, carSpawnPos, Quaternion.Euler(0.0f, 90.0f, 0.0f));
                     lastZ = newPos.z + increment.z * (amount - 1);
                 }
                 else if (type == (int)LaneTypes.RAILROAD)

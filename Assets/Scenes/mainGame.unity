@@ -1046,6 +1046,8 @@ MonoBehaviour:
     type: 2}
   troncoSpawner: {fileID: 54136348062720004, guid: 95ac42c605c1cc54ebb6088073524efd,
     type: 2}
+  carSpawner: {fileID: 54397649412189510, guid: 79834050514c79c45a50d1ca0c624b2f,
+    type: 2}
   sizeOfLane: 400
   obstacleSpawnPossibility: 10
 --- !u!65 &665406747
