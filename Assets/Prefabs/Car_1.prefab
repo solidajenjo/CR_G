@@ -442,5 +442,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
-  timeToLive: 50
+  timeToLive: 10
   timer: 0

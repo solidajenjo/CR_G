@@ -80,6 +80,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e7ef0ba12db65489669f27a06fb727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  car: {fileID: 54511143705798808, guid: 4c52a4dd006c0b94aa10f3ee570d08e9, type: 2}
-  timeBetween: 5
-  timer: 0
+  car: {fileID: 114466590782842438, guid: 4c52a4dd006c0b94aa10f3ee570d08e9, type: 2}
+  timeBetween: 3
+  speed: 0
