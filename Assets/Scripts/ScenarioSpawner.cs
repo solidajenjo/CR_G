@@ -79,13 +79,15 @@ public class ScenarioSpawner : MonoBehaviour {
                             if (i % 2 == 0)
                             {
                                 Vector3 troncoSpawnPos = newPos;
-                                Instantiate(troncoSpawner, new Vector3(leftMargin * 0.7f, 2.0f, (troncoSpawnPos + increment * i).z), transform.rotation);
+                                Instantiate(troncoSpawner, new Vector3(leftMargin, 2.0f, (troncoSpawnPos + increment * i).z), transform.rotation)
+                                    .GetComponent<TroncoSpawn>().setDirection(1.0f);
                             }
                             else
                             {
                                 Vector3 troncoSpawnPos = newPos;
                                 Quaternion rot = Quaternion.Euler(0.0f, 180.0f, 0.0f);
-                                Instantiate(troncoSpawner, new Vector3(rightMargin * 0.7f, 2.0f, (troncoSpawnPos + increment * i).z), rot);
+                                Instantiate(troncoSpawner, new Vector3(rightMargin, 2.0f, (troncoSpawnPos + increment * i).z), rot)
+                                    .GetComponent<TroncoSpawn>().setDirection(-1.0f);
                             }
                         }
                     }
@@ -98,57 +100,30 @@ public class ScenarioSpawner : MonoBehaviour {
                     int leftMargin = (int)(transform.position.x - sizeOfLane / 2);
                     int rightMargin = (int)(transform.position.x + sizeOfLane / 2);
                     Instantiate(lanes[2], newPos, transform.rotation);
-                    Vector3 carSpawnPos = newPos;
-                    carSpawnPos.x = leftMargin;
-                    Quaternion rot = Quaternion.Euler(0.0f, 90.0f, 0.0f);
-                    int ran = Random.Range(1, 3);
-                    //Debug.Log(ran);
-                    if (ran == 1)
-                    {
-                        carSpawnPos.x = rightMargin;
-                        rot = Quaternion.Euler(0.0f, -90.0f, 0.0f);
-                    }
-                    carSpawnPos.y = 4.5f;
-                    Rigidbody cs;
-                    cs = Instantiate (carSpawner, carSpawnPos, rot);
-                    CarSpawn css = cs.GetComponent<CarSpawn>();
-                    css.speed = Random.Range(50, 150);
                     materialOfTheLane[((int)(newPos).z % 1000) / 10] = type;
+                    Instantiate(carSpawner, new Vector3(leftMargin * 0.7f, 2.0f, newPos.z), transform.rotation);
                     for (int i = 1; i < amount - 1; ++i)
                     {
+                        int x = Random.Range(0, 100);
                         Instantiate(lanes[3], newPos + increment * i, transform.rotation);
                         materialOfTheLane[((int)(newPos + increment * i).z % 1000) / 10] = type;
-                        carSpawnPos = carSpawnPos + increment;
-                        carSpawnPos.x = leftMargin;
-                        rot = Quaternion.Euler(0.0f, 90.0f, 0.0f);
-                        ran = Random.Range(1, 3);
-                        //Debug.Log(ran);
-                        if (ran == 1)
+                        if (x % 2 == 0)
                         {
-                            carSpawnPos.x = rightMargin;
-                            rot = Quaternion.Euler(0.0f, -90.0f, 0.0f);
+                            Vector3 carSpawnPos = newPos;
+                            Instantiate(carSpawner, new Vector3(leftMargin * 0.7f, 2.0f, (carSpawnPos + increment * i).z), transform.rotation);
                         }
-                        cs = Instantiate(carSpawner, carSpawnPos, rot);
-                        css = cs.GetComponent<CarSpawn>();
-                        css.speed = Random.Range(50, 150);
+                        else
+                        {
+                            Vector3 carSpawnPos = newPos;
+                            Quaternion rot = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+                            Instantiate(carSpawner, new Vector3(rightMargin * 0.7f, 2.0f, (carSpawnPos + increment * i).z), rot);
+                        }
                     }
                     Instantiate(lanes[4], newPos + increment * (amount - 1), transform.rotation);
                     materialOfTheLane[((int)(newPos + increment * (amount - 1)).z % 1000) / 10] = type;
-                    carSpawnPos = carSpawnPos + increment;
-                    carSpawnPos.x = leftMargin;
-                    rot = Quaternion.Euler(0.0f, 90.0f, 0.0f);
-                    ran = Random.Range(1, 3);
-                    //Debug.Log(ran);
-                    if (ran == 1)
-                    {
-                        carSpawnPos.x = rightMargin;
-                        rot = Quaternion.Euler(0.0f, -90.0f, 0.0f);
-                    }
-                    cs = Instantiate(carSpawner, carSpawnPos, rot);
-                    css = cs.GetComponent<CarSpawn>();
-                    css.speed = Random.Range(50, 150);
-                    lastZ = newPos.z + increment.z * (amount - 1);
+                    lastZ = newPos.z + increment.z * (amount - 1);                   
                 }
+
                 else if (type == (int)LaneTypes.RAILROAD)
                 {
                     newPos.y = -3.0f;

@@ -20,6 +20,7 @@ public class Player : MonoBehaviour {
     private Vector3 origin, destination;
     public Transform translator;
     private Transform troncoTranslator;
+    private float lateralSpeed;
     private float journeyLength, startTime;
     public MovingColliders[] colliders;
     private bool[] directions = { false, false, false, false };
@@ -43,7 +44,9 @@ public class Player : MonoBehaviour {
 	void Update () {
         if (troncoTranslator != null)
         {
-            translator.position = troncoTranslator.position;
+            translator.Translate(lateralSpeed * Time.deltaTime, 0.0f, 0.0f);
+            Debug.Log("T" + troncoTranslator.transform.position.y);
+            translator.transform.position = new Vector3(translator.position.x, troncoTranslator.transform.position.y, translator.position.z);
         }
         for (int i = 0; i < 4; i++)
         {
@@ -158,6 +161,8 @@ public class Player : MonoBehaviour {
         {
             Debug.Log("TRONCO");
             troncoTranslator = other.transform;
+            lateralSpeed = other.GetComponent<Tronco>().getSpeed();
+            other.GetComponent<Tronco>().setBouncing();
         }
     }
 

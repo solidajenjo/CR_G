@@ -478,7 +478,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 36.394, y: 96.608, z: 7.76}
 --- !u!1001 &293443317
 Prefab:
@@ -699,6 +699,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1660865595300560, guid: 7ef214b6789fc1243af1334c6b662f39, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 65135301904520724, guid: 7ef214b6789fc1243af1334c6b662f39,
+        type: 2}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1389,8 +1394,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1.17, z: 1}
+  m_Center: {x: 0, y: -0.66, z: -0.22}
 --- !u!1001 &839347141
 Prefab:
   m_ObjectHideFlags: 0
@@ -1658,7 +1663,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4238014188249770, guid: 7ef214b6789fc1243af1334c6b662f39, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1660865595300560, guid: 7ef214b6789fc1243af1334c6b662f39, type: 2}
       propertyPath: m_Name
