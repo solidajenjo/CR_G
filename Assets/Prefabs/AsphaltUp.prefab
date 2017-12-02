@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 54825758057470644}
   m_Layer: 0
   m_Name: AsphaltUp
-  m_TagString: floor
+  m_TagString: asphalt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

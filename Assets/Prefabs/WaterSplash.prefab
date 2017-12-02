@@ -67,6 +67,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5817802609936ea428bdc06379bad97d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 50
+  amount: 40
   waterDrop: {fileID: 54927552517441436, guid: e68a6f0d7a0cdb94b9fac37b8c6ba551, type: 2}
   delay: 0.01

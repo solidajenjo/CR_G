@@ -21,6 +21,7 @@ public class ScenarioSpawner : MonoBehaviour {
         lastZ = transform.position.z;
         lastLane = -1;
         materialOfTheLane = new int[1000];
+        for (int i = 0; i < 1000; ++i) materialOfTheLane[i] = (int)LaneTypes.GRASS;
     }
 	
 	// Update is called once per frame
@@ -29,6 +30,7 @@ public class ScenarioSpawner : MonoBehaviour {
 
     public string getFloorMaterial(int zPos)
     {
+        if (zPos < 0) return "grass";
         int type = materialOfTheLane[(zPos % 1000) / 10];
         if (type == (int)LaneTypes.GRASS) return "grass";
         else if (type == (int)LaneTypes.WATER) return "water";
@@ -37,7 +39,7 @@ public class ScenarioSpawner : MonoBehaviour {
     }
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "floor")
+        if (other.tag == "asphalt" || other.tag == "grass" || other.tag == "water")
         {
             Vector3 newPos = transform.position;
             if (newPos.z % 10 != 0)

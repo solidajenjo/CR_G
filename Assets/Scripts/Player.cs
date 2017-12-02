@@ -13,6 +13,9 @@ public class Player : MonoBehaviour {
 
     public float speed, rotSpeed, stopAnimAngle;
     public float durationOfMovement;
+    public float timeBetweenSwearing;
+    private float swearingTimer;
+    private bool recieveSwear;
     public Animator anim;
     private float movementTimer;
     private int moving;
@@ -26,6 +29,8 @@ public class Player : MonoBehaviour {
     private bool[] directions = { false, false, false, false };
     public ScenarioSpawner scenarioSpawn;
     public Rigidbody waterSplash;
+    public AmbientSounds ambientSoundController;
+    private bool dead;
 
     void Start () {
         moving = (int)Movements.STILL;
@@ -38,14 +43,24 @@ public class Player : MonoBehaviour {
         transform.Rotate(new Vector3(0.0f, 90.0f, 0.0f));
         leftRot = transform.rotation;
         transform.rotation = forwardRot;
-
+        swearingTimer = 0.0f;
+        recieveSwear = false;
+        dead = false;        
     }
 	
 	void Update () {
+        ambientSoundController.updateEnvironment(transform.position.z);
+        if (recieveSwear)
+        {
+            swearingTimer -= Time.deltaTime;
+            if (swearingTimer <= 0)
+            {
+                recieveSwear = false;
+            }
+        }
         if (troncoTranslator != null)
         {
             translator.Translate(lateralSpeed * Time.deltaTime, 0.0f, 0.0f);
-            Debug.Log("T" + troncoTranslator.transform.position.y);
             translator.transform.position = new Vector3(translator.position.x, troncoTranslator.transform.position.y, translator.position.z);
         }
         for (int i = 0; i < 4; i++)
@@ -144,22 +159,34 @@ public class Player : MonoBehaviour {
                 moving = (int)Movements.STILL;
                 if (scenarioSpawn.getFloorMaterial((int)transform.position.z) == "water")
                 {
-                    if (troncoTranslator == null)
+                    if (troncoTranslator == null && !dead)
                     {
-                        Debug.Log("AHOGADO");
-                        Destroy(gameObject);
+                        this.GetComponent<Rigidbody>().useGravity = true;
+                        anim.SetBool("moving", true);
+                        moving += 1;
                         Instantiate(waterSplash, transform.position, transform.rotation);
+                        dead = true;
                     }
                 }
             }
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    public bool canBeSweared()
     {
+        return !recieveSwear;
+    }
+
+    public void getSweared()
+    {
+        swearingTimer = timeBetweenSwearing;
+        recieveSwear = true;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {        
         if (other.tag == "troncoFlotante")
         {
-            Debug.Log("TRONCO");
             troncoTranslator = other.transform;
             lateralSpeed = other.GetComponent<Tronco>().getSpeed();
             other.GetComponent<Tronco>().setBouncing();

@@ -8,6 +8,9 @@ TagManager:
   - floor
   - trainLamp
   - troncoFlotante
+  - asphalt
+  - grass
+  - water
   layers:
   - Default
   - TransparentFX
