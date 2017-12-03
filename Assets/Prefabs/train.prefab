@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 65748661856022240}
   m_Layer: 0
   m_Name: train
-  m_TagString: Untagged
+  m_TagString: vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -552,7 +552,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1235086328761088}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.99, y: 7.81, z: 2.74}

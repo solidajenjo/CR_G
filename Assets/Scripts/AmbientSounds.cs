@@ -40,7 +40,7 @@ public class AmbientSounds : MonoBehaviour {
                 else if (scenarioSpawn.getFloorMaterial((int)zPos + i) == "grass") grassPlaying++;
             }
         }
-        Debug.Log(grassPlaying + " "+ (float)grassPlaying / 10);
+        //Debug.Log(grassPlaying + " "+ (float)grassPlaying / 10);
         environmentAudios[0].volume = (float)grassPlaying / 5;
         environmentAudios[1].volume = (float)waterPlaying / 20;
         environmentAudios[2].volume = (float)roadPlaying / 10;

@@ -31,6 +31,7 @@ public class Player : MonoBehaviour {
     public Rigidbody waterSplash;
     public AmbientSounds ambientSoundController;
     private bool dead;
+    public VehicleCollider vehicleCollider;
 
     void Start () {
         moving = (int)Movements.STILL;
