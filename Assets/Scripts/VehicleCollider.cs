@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class VehicleCollider : MonoBehaviour {
 
-    private bool dead;
 
 	// Use this for initialization
 	void Start () {
@@ -15,16 +14,14 @@ public class VehicleCollider : MonoBehaviour {
 	void Update () {
 		
 	}
-    public bool isBlocked()
-    {
-        return dead;
-    }
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "vehicle")
         {
             Debug.Log("CHOQUE");
-            dead = true;
+            Player player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Player>();
+            player.setPlainChicken();
+            this.gameObject.SetActive(false);
         }
     }
 }

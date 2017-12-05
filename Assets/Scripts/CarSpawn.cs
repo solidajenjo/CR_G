@@ -23,11 +23,10 @@ public class CarSpawn : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            timer = Random.Range(1.0f, timeBetween);
-            Car c;
+            timer = Random.Range(1.0f, timeBetween);            
             Vector3 newPos = transform.position;
             newPos.y = 12.0f;
-            c = Instantiate<Car>(car, newPos, transform.rotation);
+            Instantiate<Car>(car, newPos, transform.rotation);
         }
     }
 }

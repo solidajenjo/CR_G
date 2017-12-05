@@ -12,6 +12,9 @@ TagManager:
   - grass
   - water
   - vehicle
+  - train
+  - blood
+  - kk
   layers:
   - Default
   - TransparentFX

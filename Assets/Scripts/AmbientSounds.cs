@@ -31,7 +31,7 @@ public class AmbientSounds : MonoBehaviour {
         roadPlaying = 0;
         grassPlaying = 0;
 
-        for (int i = -30; i < 30; i += 10)
+        for (int i = -30; i < 30; i += 2)
         {
             if ((zPos - i) >= 0)
             {
@@ -42,8 +42,8 @@ public class AmbientSounds : MonoBehaviour {
         }
         //Debug.Log(grassPlaying + " "+ (float)grassPlaying / 10);
         environmentAudios[0].volume = (float)grassPlaying / 5;
-        environmentAudios[1].volume = (float)waterPlaying / 20;
-        environmentAudios[2].volume = (float)roadPlaying / 10;
+        environmentAudios[1].volume = (float)waterPlaying / 60;
+        environmentAudios[2].volume = (float)roadPlaying / 30;
 
     }
 }

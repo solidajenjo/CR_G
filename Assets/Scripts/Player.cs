@@ -28,11 +28,13 @@ public class Player : MonoBehaviour {
     public MovingColliders[] colliders;
     private bool[] directions = { false, false, false, false };
     public ScenarioSpawner scenarioSpawn;
-    public Rigidbody waterSplash;
+    public Rigidbody waterSplash, feathers;
+    public int feathersAmount;
     public AmbientSounds ambientSoundController;
     private bool dead;
     public VehicleCollider vehicleCollider;
-
+    public GameObject plainChicken;
+    public AudioSource chickenClucking;
     void Start () {
         moving = (int)Movements.STILL;
         troncoTranslator = null;
@@ -46,7 +48,8 @@ public class Player : MonoBehaviour {
         transform.rotation = forwardRot;
         swearingTimer = 0.0f;
         recieveSwear = false;
-        dead = false;        
+        dead = false;
+        plainChicken.gameObject.SetActive(false);
     }
 	
 	void Update () {
@@ -79,6 +82,7 @@ public class Player : MonoBehaviour {
         {
             if (Input.GetKey("up") && directions[0])
             {
+                chickenClucking.Play();
                 moving = (int)Movements.MOVING_FORWARD;
                 originRot = transform.rotation;
                 finalRot = forwardRot;
@@ -106,6 +110,7 @@ public class Player : MonoBehaviour {
             }
             if (Input.GetKey("left") && directions[3])
             {
+                chickenClucking.Play();
                 moving = (int)Movements.MOVING_LEFT;
                 originRot = transform.rotation;
                 finalRot = leftRot;
@@ -119,6 +124,7 @@ public class Player : MonoBehaviour {
             }
             if (Input.GetKey("right") && directions[1])
             {
+                chickenClucking.Play();
                 moving = (int)Movements.MOVING_RIGHT;
                 originRot = transform.rotation;
                 finalRot = rightRot;
@@ -132,6 +138,7 @@ public class Player : MonoBehaviour {
             }
             if (Input.GetKey("down") && directions[2])
             {
+                chickenClucking.Play();
                 moving = (int)Movements.MOVING_BACK;
                 originRot = transform.rotation;
                 finalRot = backRot;
@@ -184,6 +191,14 @@ public class Player : MonoBehaviour {
         recieveSwear = true;
     }
 
+    public void setPlainChicken()
+    {
+        plainChicken.gameObject.SetActive(true);
+        this.gameObject.SetActive(false);
+        translator.position = new Vector3(transform.position.x, 1.5f, transform.position.z);
+        Vector3 feathersPos = new Vector3(transform.position.x, 5.0f, transform.position.z);
+        for (int i = 0; i < feathersAmount; ++i) Instantiate(feathers, feathersPos, transform.rotation);
+    }
     void OnTriggerEnter(Collider other)
     {        
         if (other.tag == "troncoFlotante")

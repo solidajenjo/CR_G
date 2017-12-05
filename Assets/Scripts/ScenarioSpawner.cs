@@ -62,6 +62,8 @@ public class ScenarioSpawner : MonoBehaviour {
                         Instantiate(lanes[type], newPos + increment * i, transform.rotation);
                         materialOfTheLane[((int)(newPos + increment * i).z % 1000) / 10] = type;
                         int leftMargin = (int)(transform.position.x - sizeOfLane / 2);
+                        while (leftMargin % 10 != 0) leftMargin += 1;
+                        Debug.Log(leftMargin);
                         int rightMargin = (int)(transform.position.x + sizeOfLane / 2);
                         if (type == (int)LaneTypes.GRASS)
                         {
@@ -97,6 +99,7 @@ public class ScenarioSpawner : MonoBehaviour {
                 }
                 else if (type == (int)LaneTypes.ROAD)
                 {
+                    Quaternion rot;
                     Vector3 increment = new Vector3(0.0f, 0.0f, 10.0f);
                     newPos.y = 0.0f;
                     int leftMargin = (int)(transform.position.x - sizeOfLane / 2);
@@ -117,11 +120,13 @@ public class ScenarioSpawner : MonoBehaviour {
                         else
                         {
                             Vector3 carSpawnPos = newPos;
-                            Quaternion rot = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+                            rot = Quaternion.Euler(0.0f, 180.0f, 0.0f);
                             Instantiate(carSpawner, new Vector3(rightMargin * 0.7f, 2.0f, (carSpawnPos + increment * i).z), rot);
                         }
                     }
                     Instantiate(lanes[4], newPos + increment * (amount - 1), transform.rotation);
+                    rot = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+                    Instantiate(carSpawner, new Vector3(rightMargin * 0.7f, 2.0f, (newPos + increment * (amount-1)).z), rot);
                     materialOfTheLane[((int)(newPos + increment * (amount - 1)).z % 1000) / 10] = type;
                     lastZ = newPos.z + increment.z * (amount - 1);                   
                 }
