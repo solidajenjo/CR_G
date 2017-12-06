@@ -20,7 +20,7 @@ public class CameraScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (player.getScore() > 10 && zMover <= 0)
+        if (player.getScore() > 10 && zMover <= 0 && !player.isDead())
         {
             zOffset += Time.deltaTime * speed;
         }
@@ -35,8 +35,13 @@ public class CameraScript : MonoBehaviour {
             scoreWatchDog = player.getScore();
         }
         zOffset = Mathf.Clamp(zOffset, zOffsetMin, zOffsetMax);
-        if (player.isDead()) return;
+        //if (player.isDead()) return;
         transform.position = new Vector3(chickenTransform.position.x + xOffset, transform.position.y, 
-            chickenTransform.position.z + zOffset);        
-	}
+            chickenTransform.position.z + zOffset);
+        if (zOffset >= zOffsetMax)
+        {
+            player.setNuked();
+            zMover = zInc * 2;
+        }
+    }
 }

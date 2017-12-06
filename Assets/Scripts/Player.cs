@@ -41,6 +41,7 @@ public class Player : MonoBehaviour {
     private int score, hiscore;
     public GameObject gameOver;
     public Light light;
+    public NukeExplosion nukeExplosion;
     void Start () {
         moving = (int)Movements.STILL;
         troncoTranslator = null;
@@ -183,22 +184,47 @@ public class Player : MonoBehaviour {
                 {
                     if (troncoTranslator == null && !dead)
                     {
-                        this.GetComponent<Rigidbody>().useGravity = true;
-                        anim.SetBool("moving", true);
-                        moving += 1;
-                        Instantiate(waterSplash, transform.position, transform.rotation);
-                        dead = true;
-                        gameOver.SetActive(true);
-                        if (dead && hiscore > score)
-                        {
-                            //grabar hi-score
-                        }
+                        setDrowned();
                     }
                 }
             }
         }
     }
-
+    public void setDrowned()
+    {
+        this.GetComponent<Rigidbody>().useGravity = true;
+        anim.SetBool("moving", true);
+        moving += 1;
+        Instantiate(waterSplash, transform.position, transform.rotation);
+        dead = true;
+        gameOver.SetActive(true);
+        if (dead && hiscore > score)
+        {
+            //grabar hi-score
+        }
+    }
+    public void setNuked()
+    {
+        if (scenarioSpawn.getFloorMaterial((int)transform.position.z) == "water")
+        {
+            setDrowned();
+            return;
+        }
+        else if (scenarioSpawn.getFloorMaterial((int)transform.position.z) == "road")
+        {
+            setPlainChicken();
+        }
+        else{
+            Instantiate(nukeExplosion, transform.position, transform.rotation);
+            this.gameObject.SetActive(false);
+            dead = true;
+            gameOver.SetActive(true);
+            if (dead && hiscore > score)
+            {
+                //grabar hi-score
+            }
+        }
+    }
     public bool canBeSweared()
     {
         return !recieveSwear;
