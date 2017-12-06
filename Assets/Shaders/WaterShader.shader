@@ -42,8 +42,8 @@ Shader "Mattatz/TextureAnimation"
 
 			fixed4 _Color;
 
-			uint _Cols;
-			uint _Rows;
+			int _Cols;
+			int _Rows;
 
 			float _Frame;
 			
