@@ -319,7 +319,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1531630579660326}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00573, y: -0.00262, z: -0.00975}
+  m_LocalPosition: {x: -0.005729986, y: -0.0026200078, z: -0.009749998}
   m_LocalScale: {x: 1, y: 0.9999995, z: 0.9999995}
   m_Children: []
   m_Father: {fileID: 4158545775057158}
@@ -373,7 +373,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1352670818479570}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
-  m_LocalPosition: {x: -16.754944, y: 12, z: 160}
+  m_LocalPosition: {x: 132.88599, y: 12, z: 360}
   m_LocalScale: {x: 9.221391, y: 9.221397, z: 9.221397}
   m_Children:
   - {fileID: 4412341389790434}
@@ -460,7 +460,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1805971682505874}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00565, y: 0.00306, z: -0.00993}
+  m_LocalPosition: {x: -0.0056499466, y: 0.0030600012, z: -0.009929989}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4158545775057158}
@@ -618,7 +618,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f62270f39819f9f4ebf878a27adbd3bc, type: 2}
+  - {fileID: 2100000, guid: 7c96da3de1131384aa19b2886c61ae23, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -754,7 +754,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7c96da3de1131384aa19b2886c61ae23, type: 2}
+  - {fileID: 2100000, guid: 478f4ba1fa2c9de41b24570ab3a61353, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1385,7 +1385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 40
   timeToLive: 10
-  timer: 5.906133
+  timer: 9.647151
   materials:
   - {fileID: 2100000, guid: f62270f39819f9f4ebf878a27adbd3bc, type: 2}
   - {fileID: 2100000, guid: 56d04d532e72c934393acf68c7175c97, type: 2}

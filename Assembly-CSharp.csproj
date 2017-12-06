@@ -53,11 +53,13 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\AmbientSounds.cs" />
      <Compile Include="Assets\Scripts\Blood.cs" />
+     <Compile Include="Assets\Scripts\CameraScript.cs" />
      <Compile Include="Assets\Scripts\Car.cs" />
      <Compile Include="Assets\Scripts\CarSpawn.cs" />
      <Compile Include="Assets\Scripts\Feathers.cs" />
      <Compile Include="Assets\Scripts\Horn.cs" />
      <Compile Include="Assets\Scripts\Humo.cs" />
+     <Compile Include="Assets\Scripts\MainScreenGrass.cs" />
      <Compile Include="Assets\Scripts\MovingColliders.cs" />
      <Compile Include="Assets\Scripts\plainChicken.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
@@ -67,6 +69,7 @@
      <Compile Include="Assets\Scripts\Train.cs" />
      <Compile Include="Assets\Scripts\TrainLamp.cs" />
      <Compile Include="Assets\Scripts\TrainSpawn.cs" />
+     <Compile Include="Assets\Scripts\TreeAnimator.cs" />
      <Compile Include="Assets\Scripts\Tronco.cs" />
      <Compile Include="Assets\Scripts\TroncoSpawn.cs" />
      <Compile Include="Assets\Scripts\VehicleCollider.cs" />

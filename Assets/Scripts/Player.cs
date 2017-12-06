@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System.IO;
 
 
 public class Player : MonoBehaviour {
@@ -35,6 +37,10 @@ public class Player : MonoBehaviour {
     public VehicleCollider vehicleCollider;
     public GameObject plainChicken;
     public AudioSource chickenClucking;
+    public Text scoreText, hiscoreText;
+    private int score, hiscore;
+    public GameObject gameOver;
+    public Light light;
     void Start () {
         moving = (int)Movements.STILL;
         troncoTranslator = null;
@@ -50,9 +56,15 @@ public class Player : MonoBehaviour {
         recieveSwear = false;
         dead = false;
         plainChicken.gameObject.SetActive(false);
+        score = 0;
+        //leer hi-score
+        hiscore = 0;
+        hiscoreText.text = hiscoreText.text + hiscore.ToString();
+        gameOver.SetActive(false);
     }
-	
-	void Update () {
+
+    void Update () {
+        if (dead) return;
         ambientSoundController.updateEnvironment(transform.position.z);
         if (recieveSwear)
         {
@@ -82,6 +94,8 @@ public class Player : MonoBehaviour {
         {
             if (Input.GetKey("up") && directions[0])
             {
+                score++;
+                scoreText.text = score.ToString();
                 chickenClucking.Play();
                 moving = (int)Movements.MOVING_FORWARD;
                 originRot = transform.rotation;
@@ -174,6 +188,11 @@ public class Player : MonoBehaviour {
                         moving += 1;
                         Instantiate(waterSplash, transform.position, transform.rotation);
                         dead = true;
+                        gameOver.SetActive(true);
+                        if (dead && hiscore > score)
+                        {
+                            //grabar hi-score
+                        }
                     }
                 }
             }
@@ -198,6 +217,22 @@ public class Player : MonoBehaviour {
         translator.position = new Vector3(transform.position.x, 1.5f, transform.position.z);
         Vector3 feathersPos = new Vector3(transform.position.x, 5.0f, transform.position.z);
         for (int i = 0; i < feathersAmount; ++i) Instantiate(feathers, feathersPos, transform.rotation);
+        dead = true;
+        gameOver.SetActive(true);        
+        if (dead && hiscore > score)
+        {
+            //grabar hi-score
+        }
+    }
+
+    public int getScore()
+    {
+        return score;
+    }
+
+    public bool isDead()
+    {
+        return dead;
     }
     void OnTriggerEnter(Collider other)
     {        

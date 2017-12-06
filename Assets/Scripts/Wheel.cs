@@ -23,14 +23,13 @@ public class Wheel : MonoBehaviour {
         timerBetween -= Time.deltaTime;
         if (timerBetween <= 0 && timer > 0)
         {
-            Debug.Log("WHEEL BLOOD");
             Instantiate(bloodDrop, new Vector3(transform.position.x,
             transform.position.y, transform.position.z), transform.rotation);
             timerBetween = timeBetweenDrops;
         }
 	}
 
-    void OnTriggerExit(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.tag == "blood")
         {           

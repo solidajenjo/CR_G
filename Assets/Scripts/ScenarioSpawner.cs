@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class ScenarioSpawner : MonoBehaviour {
 
     public Rigidbody[] lanes;
@@ -26,6 +26,7 @@ public class ScenarioSpawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (Input.GetKeyDown(KeyCode.Escape)) SceneManager.LoadScene("mainMenu", LoadSceneMode.Single);
     }
 
     public string getFloorMaterial(int zPos)

@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4441718296707802}
   - component: {fileID: 33283269298844330}
   - component: {fileID: 23224286073858438}
+  - component: {fileID: 114347618096182792}
+  - component: {fileID: 114737492019179446}
   m_Layer: 0
   m_Name: Copa
   m_TagString: Untagged
@@ -212,3 +214,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.74, y: 3.89, z: 0.39}
   m_Center: {x: 0, y: 1.87, z: 0}
+--- !u!114 &114347618096182792
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1288775157526746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55653f204d4fa94419259524e5eb29c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114737492019179446
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1288775157526746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73f3fe09a1a7dc441bdc7d569fa5713b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitude: 0.0009
