@@ -53,6 +53,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\AmbientSounds.cs" />
      <Compile Include="Assets\Scripts\Blood.cs" />
+     <Compile Include="Assets\Scripts\BloodWaterSpawn.cs" />
      <Compile Include="Assets\Scripts\CameraScript.cs" />
      <Compile Include="Assets\Scripts\Car.cs" />
      <Compile Include="Assets\Scripts\CarSpawn.cs" />
@@ -75,6 +76,7 @@
      <Compile Include="Assets\Scripts\Tronco.cs" />
      <Compile Include="Assets\Scripts\TroncoSpawn.cs" />
      <Compile Include="Assets\Scripts\VehicleCollider.cs" />
+     <Compile Include="Assets\Scripts\WaterBlood.cs" />
      <Compile Include="Assets\Scripts\WaterDrop.cs" />
      <Compile Include="Assets\Scripts\WaterSplash.cs" />
      <Compile Include="Assets\Scripts\Wheel.cs" />

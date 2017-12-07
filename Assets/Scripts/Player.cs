@@ -42,6 +42,7 @@ public class Player : MonoBehaviour {
     public GameObject gameOver;
     public Light light;
     public NukeExplosion nukeExplosion;
+    public CameraScript camera;
     void Start () {
         moving = (int)Movements.STILL;
         troncoTranslator = null;
@@ -198,6 +199,7 @@ public class Player : MonoBehaviour {
         Instantiate(waterSplash, transform.position, transform.rotation);
         dead = true;
         gameOver.SetActive(true);
+        camera.rewind();
         if (dead && hiscore > score)
         {
             //grabar hi-score
@@ -244,7 +246,8 @@ public class Player : MonoBehaviour {
         Vector3 feathersPos = new Vector3(transform.position.x, 5.0f, transform.position.z);
         for (int i = 0; i < feathersAmount; ++i) Instantiate(feathers, feathersPos, transform.rotation);
         dead = true;
-        gameOver.SetActive(true);        
+        gameOver.SetActive(true);
+        camera.rewind();
         if (dead && hiscore > score)
         {
             //grabar hi-score

@@ -64,7 +64,6 @@ public class ScenarioSpawner : MonoBehaviour {
                         materialOfTheLane[((int)(newPos + increment * i).z % 1000) / 10] = type;
                         int leftMargin = (int)(transform.position.x - sizeOfLane / 2);
                         while (leftMargin % 10 != 0) leftMargin += 1;
-                        Debug.Log(leftMargin);
                         int rightMargin = (int)(transform.position.x + sizeOfLane / 2);
                         if (type == (int)LaneTypes.GRASS)
                         {

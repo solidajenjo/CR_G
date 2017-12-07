@@ -554,7 +554,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 146239796}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -578,6 +578,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloodEffectDuration: 15
+  bloodWaterSpawn: {fileID: 114796104746782836, guid: 1b5b355679bba5b4192215bc58d1f137,
+    type: 2}
 --- !u!1001 &170911057
 Prefab:
   m_ObjectHideFlags: 0
@@ -1045,7 +1047,7 @@ Transform:
   - {fileID: 1978907541}
   - {fileID: 108302525}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &385715219
 Prefab:
@@ -2026,6 +2028,7 @@ MonoBehaviour:
   light: {fileID: 0}
   nukeExplosion: {fileID: 114569234812233012, guid: dad5923cac3fa864587afa9123c04788,
     type: 2}
+  camera: {fileID: 1944057501}
 --- !u!54 &805316796
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2373,7 +2376,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4238187074773174, guid: fe9b31276b94d1d429022f1cd8b840f1, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114571852772613868, guid: fe9b31276b94d1d429022f1cd8b840f1,
         type: 2}

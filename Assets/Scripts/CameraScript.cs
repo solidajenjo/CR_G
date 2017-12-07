@@ -44,4 +44,9 @@ public class CameraScript : MonoBehaviour {
             zMover = zInc * 2;
         }
     }
+
+    public void rewind()
+    {
+        zMover = zInc * 2;
+    }
 }

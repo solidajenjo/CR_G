@@ -28,7 +28,6 @@ public class MainScreenGrass : MonoBehaviour {
         if (Input.GetKeyDown("up") || Input.GetKeyDown("down"))
         {
             toggler = !toggler;
-            Debug.Log(toggler);
             if (toggler) arrow.rectTransform.anchoredPosition =
                     new Vector2(arrow.rectTransform.anchoredPosition.x, -350);
             else arrow.rectTransform.anchoredPosition =
