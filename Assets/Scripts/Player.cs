@@ -59,8 +59,7 @@ public class Player : MonoBehaviour {
         dead = false;
         plainChicken.gameObject.SetActive(false);
         score = 0;
-        //leer hi-score
-        hiscore = 0;
+        hiscore = PlayerPrefs.GetInt("high score", 0);
         hiscoreText.text = hiscoreText.text + hiscore.ToString();
         gameOver.SetActive(false);
     }
@@ -200,9 +199,11 @@ public class Player : MonoBehaviour {
         dead = true;
         gameOver.SetActive(true);
         camera.rewind();
-        if (dead && hiscore > score)
+        hiscore = PlayerPrefs.GetInt("high score", 0);
+        if (dead && hiscore < score)
         {
-            //grabar hi-score
+            PlayerPrefs.SetInt("high score", score);
+            hiscoreText.text = "hi-score " + score.ToString();
         }
     }
     public void setNuked()
@@ -221,9 +222,11 @@ public class Player : MonoBehaviour {
             this.gameObject.SetActive(false);
             dead = true;
             gameOver.SetActive(true);
-            if (dead && hiscore > score)
+            hiscore = PlayerPrefs.GetInt("high score", 0);
+            if (dead && hiscore < score)
             {
-                //grabar hi-score
+                PlayerPrefs.SetInt("high score", score);
+                hiscoreText.text = "hi-score " + score.ToString();
             }
         }
     }
@@ -248,9 +251,11 @@ public class Player : MonoBehaviour {
         dead = true;
         gameOver.SetActive(true);
         camera.rewind();
-        if (dead && hiscore > score)
+        hiscore = PlayerPrefs.GetInt("high score", 0);
+        if (dead && hiscore < score)
         {
-            //grabar hi-score
+            PlayerPrefs.SetInt("high score", score);
+            hiscoreText.text = "hi-score " + score.ToString();
         }
     }
 
