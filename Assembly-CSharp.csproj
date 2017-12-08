@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\fps.cs" />
      <Compile Include="Assets\Scripts\AmbientSounds.cs" />
      <Compile Include="Assets\Scripts\Blood.cs" />
      <Compile Include="Assets\Scripts\BloodWaterSpawn.cs" />
