@@ -15,12 +15,12 @@ public class CameraScript : MonoBehaviour {
     public Player player;
     private float scoreWatchDog;
 	void Start () {
-        scoreWatchDog = 10;
+        scoreWatchDog = 3;
 	}
 
     // Update is called once per frame
     void Update() {
-        if (player.getScore() > 10 && zMover <= 0 && !player.isDead())
+        if (player.getScore() > 3 && zMover <= 0 && !player.isDead())
         {
             zOffset += Time.deltaTime * speed;
         }

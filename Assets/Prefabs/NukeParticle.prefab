@@ -182,9 +182,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ad3bfb45a02984d985ed14970a12e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  height: 30
+  height: 15
   degree: 90
   speed: 50
   speed2: 10
   expansionMultiplier: 1.05
-  duration: 5
+  duration: 15

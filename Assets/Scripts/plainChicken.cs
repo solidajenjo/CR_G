@@ -11,7 +11,7 @@ public class plainChicken : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         timer = duration;
-        transf.rotation = Quaternion.Euler(new Vector3(0.0f, Random.Range(0.0f, 180.0f), 0.0f));
+        transf.rotation = Quaternion.Euler(new Vector3(0.0f, 45.0f, 0.0f));
 	}
 	
 	// Update is called once per frame

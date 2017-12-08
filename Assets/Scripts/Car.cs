@@ -30,8 +30,4 @@ public class Car : MonoBehaviour {
         if (timer <= 0) Destroy(gameObject);
 	}
 
-    void OnTriggerEnter(Collider other)
-    {
-        //Morir si es el pollo
-    }
 }

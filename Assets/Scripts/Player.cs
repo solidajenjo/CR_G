@@ -30,19 +30,21 @@ public class Player : MonoBehaviour {
     public MovingColliders[] colliders;
     private bool[] directions = { false, false, false, false };
     public ScenarioSpawner scenarioSpawn;
-    public Rigidbody waterSplash, feathers;
+    public Rigidbody waterSplash, feathers, scenarioDestroyerWhenDead;
     public int feathersAmount;
     public AmbientSounds ambientSoundController;
     private bool dead;
     public VehicleCollider vehicleCollider;
     public GameObject plainChicken;
     public AudioSource chickenClucking;
-    public Text scoreText, hiscoreText;
+    public Text scoreText, hiscoreText, tutorialText;
     private int score, hiscore;
     public GameObject gameOver;
-    public Light light;
+    private float lastZ;
     public NukeExplosion nukeExplosion;
     public CameraScript camera;
+    private int frameCounter;
+    public int skipRate;
     void Start () {
         moving = (int)Movements.STILL;
         troncoTranslator = null;
@@ -62,11 +64,15 @@ public class Player : MonoBehaviour {
         hiscore = PlayerPrefs.GetInt("high score", 0);
         hiscoreText.text = hiscoreText.text + hiscore.ToString();
         gameOver.SetActive(false);
+        lastZ = 0;
+        frameCounter = 0;
+        scenarioDestroyerWhenDead.gameObject.SetActive(false);
     }
 
     void Update () {
         if (dead) return;
-        ambientSoundController.updateEnvironment(transform.position.z);
+        frameCounter++;
+        if (frameCounter % skipRate == 0) ambientSoundController.updateEnvironment(transform.position.z); //OPTIMIZATION
         if (recieveSwear)
         {
             swearingTimer -= Time.deltaTime;
@@ -95,8 +101,6 @@ public class Player : MonoBehaviour {
         {
             if (Input.GetKey("up") && directions[0])
             {
-                score++;
-                scoreText.text = score.ToString();
                 chickenClucking.Play();
                 moving = (int)Movements.MOVING_FORWARD;
                 originRot = transform.rotation;
@@ -179,6 +183,14 @@ public class Player : MonoBehaviour {
             }
             if (movementTimer <= 0)
             {
+                if (moving == (int)Movements.MOVING_FORWARD &&
+                    transform.position.z > lastZ)
+                {
+                    if (score > 8) tutorialText.gameObject.SetActive(false);
+                    score++;
+                    scoreText.text = score.ToString();
+                    lastZ = transform.position.z;
+                }
                 moving = (int)Movements.STILL;
                 if (scenarioSpawn.getFloorMaterial((int)transform.position.z) == "water")
                 {
@@ -193,6 +205,7 @@ public class Player : MonoBehaviour {
     public void setDrowned()
     {
         this.GetComponent<Rigidbody>().useGravity = true;
+        scenarioDestroyerWhenDead.gameObject.SetActive(true);
         anim.SetBool("moving", true);
         moving += 1;
         Instantiate(waterSplash, transform.position, transform.rotation);
@@ -219,6 +232,7 @@ public class Player : MonoBehaviour {
         }
         else{
             Instantiate(nukeExplosion, transform.position, transform.rotation);
+            scenarioDestroyerWhenDead.gameObject.SetActive(true);
             this.gameObject.SetActive(false);
             dead = true;
             gameOver.SetActive(true);
@@ -245,6 +259,7 @@ public class Player : MonoBehaviour {
     {
         plainChicken.gameObject.SetActive(true);
         this.gameObject.SetActive(false);
+        scenarioDestroyerWhenDead.gameObject.SetActive(true);
         translator.position = new Vector3(transform.position.x, 1.5f, transform.position.z);
         Vector3 feathersPos = new Vector3(transform.position.x, 5.0f, transform.position.z);
         for (int i = 0; i < feathersAmount; ++i) Instantiate(feathers, feathersPos, transform.rotation);
