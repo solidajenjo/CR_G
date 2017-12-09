@@ -43,6 +43,7 @@ public class ScenarioSpawner : MonoBehaviour {
         if (other.tag == "asphalt" || other.tag == "grass" || other.tag == "water")
         {
             Vector3 newPos = transform.position;
+            newPos.x = 0.0f;
             if (newPos.z % 10 != 0)
             {
                 newPos.z = newPos.z + 10 - (newPos.z % 10);
@@ -62,13 +63,13 @@ public class ScenarioSpawner : MonoBehaviour {
                     {
                         Instantiate(lanes[type], newPos + increment * i, transform.rotation);
                         materialOfTheLane[((int)(newPos + increment * i).z % 1000) / 10] = type;
-                        int leftMargin = (int)(transform.position.x - sizeOfLane / 2);
+                        int leftMargin = (int)(-sizeOfLane / 2);
                         while (leftMargin % 10 != 0) leftMargin += 1;
-                        int rightMargin = (int)(transform.position.x + sizeOfLane / 2);
+                        int rightMargin = (int)(sizeOfLane / 2);
                         if (type == (int)LaneTypes.GRASS)
                         {
                             newPos.y = 0.5f;                           
-                            for (int j = leftMargin; j < rightMargin; j += 10)
+                            for (int j = leftMargin + 20; j < rightMargin - 20; j += 10)
                             {
                                 int spawnPossibility = Random.Range(0, 100);
                                 if (spawnPossibility < obstacleSpawnPossibility)
@@ -102,11 +103,11 @@ public class ScenarioSpawner : MonoBehaviour {
                     Quaternion rot;
                     Vector3 increment = new Vector3(0.0f, 0.0f, 10.0f);
                     newPos.y = 0.0f;
-                    int leftMargin = (int)(transform.position.x - sizeOfLane / 2);
-                    int rightMargin = (int)(transform.position.x + sizeOfLane / 2);
+                    int leftMargin = (int)(-sizeOfLane / 2);
+                    int rightMargin = (int)(sizeOfLane / 2);
                     Instantiate(lanes[2], newPos, transform.rotation);
                     materialOfTheLane[((int)(newPos).z % 1000) / 10] = type;
-                    Instantiate(carSpawner, new Vector3(leftMargin * 0.7f, 2.0f, newPos.z), transform.rotation);
+                    Instantiate(carSpawner, new Vector3(leftMargin, 2.0f, newPos.z), transform.rotation);
                     for (int i = 1; i < amount - 1; ++i)
                     {
                         int x = Random.Range(0, 100);
@@ -115,18 +116,18 @@ public class ScenarioSpawner : MonoBehaviour {
                         if (x % 2 == 0)
                         {
                             Vector3 carSpawnPos = newPos;
-                            Instantiate(carSpawner, new Vector3(leftMargin * 0.7f, 2.0f, (carSpawnPos + increment * i).z), transform.rotation);
+                            Instantiate(carSpawner, new Vector3(leftMargin, 2.0f, (carSpawnPos + increment * i).z), transform.rotation);
                         }
                         else
                         {
                             Vector3 carSpawnPos = newPos;
                             rot = Quaternion.Euler(0.0f, 180.0f, 0.0f);
-                            Instantiate(carSpawner, new Vector3(rightMargin * 0.7f, 2.0f, (carSpawnPos + increment * i).z), rot);
+                            Instantiate(carSpawner, new Vector3(rightMargin, 2.0f, (carSpawnPos + increment * i).z), rot);
                         }
                     }
                     Instantiate(lanes[4], newPos + increment * (amount - 1), transform.rotation);
                     rot = Quaternion.Euler(0.0f, 180.0f, 0.0f);
-                    Instantiate(carSpawner, new Vector3(rightMargin * 0.7f, 2.0f, (newPos + increment * (amount-1)).z), rot);
+                    Instantiate(carSpawner, new Vector3(rightMargin, 2.0f, (newPos + increment * (amount-1)).z), rot);
                     materialOfTheLane[((int)(newPos + increment * (amount - 1)).z % 1000) / 10] = type;
                     lastZ = newPos.z + increment.z * (amount - 1);                   
                 }
@@ -135,8 +136,8 @@ public class ScenarioSpawner : MonoBehaviour {
                 {
                     newPos.y = -3.0f;
                     Quaternion rot = Quaternion.Euler(0.0f, 180.0f, 0.0f);
-                    int leftMargin = (int)(transform.position.x - sizeOfLane / 2);
-                    int rightMargin = (int)(transform.position.x + sizeOfLane / 2);
+                    int leftMargin = (int)(-sizeOfLane / 2);
+                    int rightMargin = (int)(sizeOfLane / 2);
                     Vector3 trainSpawnPos = newPos;
                     trainSpawnPos.x = leftMargin;
                     trainSpawnPos.y = 8.5f;
