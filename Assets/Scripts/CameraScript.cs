@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class CameraScript : MonoBehaviour {
 
     // Use this for initialization
@@ -11,11 +11,14 @@ public class CameraScript : MonoBehaviour {
     public float speed;
     public float zInc;
     public float zOffsetMin, zOffsetMax;
+    public float xMin, xMax, xExtra;
     private float zMover;
     public Player player;
     private float scoreWatchDog;
-	void Start () {
+    public Text tip;
+    void Start () {
         scoreWatchDog = 3;
+        tip.gameObject.SetActive(false);
 	}
 
     // Update is called once per frame
@@ -36,9 +39,11 @@ public class CameraScript : MonoBehaviour {
         }
         zOffset = Mathf.Clamp(zOffset, zOffsetMin, zOffsetMax);
         //if (player.isDead()) return;
-        transform.position = new Vector3(chickenTransform.position.x + xOffset, transform.position.y, 
+        float xCam = Mathf.Clamp(chickenTransform.position.x, xMin, xMax);
+        transform.position = new Vector3(xCam + xOffset, transform.position.y, 
             chickenTransform.position.z + zOffset);
-        if (zOffset >= zOffsetMax)
+        if ((zOffset >= zOffsetMax || chickenTransform.position.x < xMin - xExtra || 
+            chickenTransform.position.x > xMax + xExtra + 10.0f) && !player.isDead())
         {
             player.setNuked();
             zMover = zInc * 2;

@@ -319,7 +319,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1531630579660326}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.005729986, y: -0.0026200078, z: -0.009749998}
+  m_LocalPosition: {x: -0.0057299784, y: -0.0026200092, z: -0.009749999}
   m_LocalScale: {x: 1, y: 0.9999995, z: 0.9999995}
   m_Children: []
   m_Father: {fileID: 4158545775057158}
@@ -372,8 +372,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1352670818479570}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
-  m_LocalPosition: {x: 132.88599, y: 12, z: 360}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.691533, y: 12, z: 210}
   m_LocalScale: {x: 9.221391, y: 9.221397, z: 9.221397}
   m_Children:
   - {fileID: 4412341389790434}
@@ -460,7 +460,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1805971682505874}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0056499466, y: 0.0030600012, z: -0.009929989}
+  m_LocalPosition: {x: -0.0056499336, y: 0.0030599998, z: -0.00992999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4158545775057158}
@@ -499,7 +499,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1479841661936594}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.8700035, y: -0.49, z: 0.0000002509035}
+  m_LocalPosition: {x: 2.8700035, y: -0.49, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4014920779625448}
@@ -618,7 +618,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7c96da3de1131384aa19b2886c61ae23, type: 2}
+  - {fileID: 2100000, guid: 04e1f6cf04fb26545b0eefe8237c2ea2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -754,7 +754,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 478f4ba1fa2c9de41b24570ab3a61353, type: 2}
+  - {fileID: 2100000, guid: f62270f39819f9f4ebf878a27adbd3bc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -958,7 +958,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.39, y: 0.93, z: 1}
+  m_Size: {x: 2.06, y: 0.93, z: 0.72}
   m_Center: {x: 0.03, y: -0.51, z: 0}
 --- !u!65 &65566539693708406
 BoxCollider:
@@ -1383,9 +1383,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67f0b0644640c0b4085f169ef02c1180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 40
-  timeToLive: 7
-  timer: 9.647151
+  speed: 30
+  timeToLive: 9
+  timer: 4.5102854
   materials:
   - {fileID: 2100000, guid: f62270f39819f9f4ebf878a27adbd3bc, type: 2}
   - {fileID: 2100000, guid: 56d04d532e72c934393acf68c7175c97, type: 2}

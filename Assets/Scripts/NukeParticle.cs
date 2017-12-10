@@ -34,10 +34,13 @@ public class NukeParticle : MonoBehaviour {
         {
             //speed2 *= expansionMultiplier;
             transform.Translate(transform.forward * speed2 * Time.deltaTime);
-            Vector3 expansionVector = new Vector3(transform.localScale.x * expansionMultiplier * Time.deltaTime, 
-                transform.localScale.y * expansionMultiplier * Time.deltaTime, 
-                transform.localScale.z * expansionMultiplier * Time.deltaTime);
-            transform.localScale = transform.localScale + expansionVector;
+            if (timer < 3.0)
+            {
+                Vector3 expansionVector = new Vector3(transform.localScale.x * expansionMultiplier * Time.deltaTime,
+                    transform.localScale.y * expansionMultiplier * Time.deltaTime,
+                    transform.localScale.z * expansionMultiplier * Time.deltaTime);
+                transform.localScale = transform.localScale + expansionVector;
+            }
         }
 	}
 

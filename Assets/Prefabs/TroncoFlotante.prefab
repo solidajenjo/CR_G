@@ -123,8 +123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7be12203662776744ae8728458d720bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
-  timeToLive: 8
+  speed: 20
+  timeToLive: 10
   amplitude: -40
   atenuator: 0.2
   bounceTime: 0.3

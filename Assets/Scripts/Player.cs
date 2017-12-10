@@ -37,7 +37,7 @@ public class Player : MonoBehaviour {
     public VehicleCollider vehicleCollider;
     public GameObject plainChicken;
     public AudioSource chickenClucking;
-    public Text scoreText, hiscoreText, tutorialText;
+    public Text scoreText, hiscoreText, tutorialText, tipSwim, tipRoad, tipCam;
     private int score, hiscore;
     public GameObject gameOver;
     private float lastZ;
@@ -67,6 +67,9 @@ public class Player : MonoBehaviour {
         lastZ = 0;
         frameCounter = 0;
         scenarioDestroyerWhenDead.gameObject.SetActive(false);
+        tipSwim.gameObject.SetActive(false);
+        tipRoad.gameObject.SetActive(false);
+        tipCam.gameObject.SetActive(false);
     }
 
     void Update () {
@@ -211,6 +214,7 @@ public class Player : MonoBehaviour {
         Instantiate(waterSplash, transform.position, transform.rotation);
         dead = true;
         gameOver.SetActive(true);
+        if (!tipCam.IsActive()) tipSwim.gameObject.SetActive(true);
         camera.rewind();
         hiscore = PlayerPrefs.GetInt("high score", 0);
         if (dead && hiscore < score)
@@ -221,6 +225,7 @@ public class Player : MonoBehaviour {
     }
     public void setNuked()
     {
+        tipCam.gameObject.SetActive(true);
         if (scenarioSpawn.getFloorMaterial((int)transform.position.z) == "water")
         {
             setDrowned();
@@ -231,9 +236,11 @@ public class Player : MonoBehaviour {
             setPlainChicken();
         }
         else{
-            Instantiate(nukeExplosion, transform.position, transform.rotation);
+            Vector3 nukePos = transform.position;
+            nukePos.y = 0.0f;
+            Instantiate(nukeExplosion, nukePos, transform.rotation);
             scenarioDestroyerWhenDead.gameObject.SetActive(true);
-            this.gameObject.SetActive(false);
+            this.gameObject.SetActive(false);            
             dead = true;
             gameOver.SetActive(true);
             hiscore = PlayerPrefs.GetInt("high score", 0);
@@ -259,6 +266,7 @@ public class Player : MonoBehaviour {
     {
         plainChicken.gameObject.SetActive(true);
         this.gameObject.SetActive(false);
+        if (!tipCam.IsActive()) tipRoad.gameObject.SetActive(true);
         scenarioDestroyerWhenDead.gameObject.SetActive(true);
         translator.position = new Vector3(transform.position.x, 1.5f, transform.position.z);
         Vector3 feathersPos = new Vector3(transform.position.x, 5.0f, transform.position.z);
