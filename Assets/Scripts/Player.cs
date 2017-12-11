@@ -70,6 +70,8 @@ public class Player : MonoBehaviour {
         tipSwim.gameObject.SetActive(false);
         tipRoad.gameObject.SetActive(false);
         tipCam.gameObject.SetActive(false);
+        chickenClucking.Play();
+        chickenClucking.Pause();
     }
 
     void Update () {
@@ -160,7 +162,7 @@ public class Player : MonoBehaviour {
             }
             if (Input.GetKey("down") && directions[2])
             {
-                chickenClucking.Play();
+                chickenClucking.UnPause();
                 moving = (int)Movements.MOVING_BACK;
                 originRot = transform.rotation;
                 finalRot = backRot;
@@ -195,6 +197,7 @@ public class Player : MonoBehaviour {
                     lastZ = transform.position.z;
                 }
                 moving = (int)Movements.STILL;
+                chickenClucking.Pause();
                 if (scenarioSpawn.getFloorMaterial((int)transform.position.z) == "water")
                 {
                     if (troncoTranslator == null && !dead)

@@ -51,6 +51,7 @@ public class ScenarioSpawner : MonoBehaviour {
             if (lastZ < newPos.z)
             {
                 int type = Random.Range(0, 4);
+                int lastLaneMem = lastLane;
                 while (type == lastLane) type = Random.Range(0, 4); //Force alternance between lanes
                 lastLane = type;
                 int amount = Random.Range(3, 6);
@@ -66,7 +67,8 @@ public class ScenarioSpawner : MonoBehaviour {
                         int leftMargin = (int)(-sizeOfLane / 2);
                         while (leftMargin % 10 != 0) leftMargin += 1;
                         int rightMargin = (int)(sizeOfLane / 2);
-                        if (type == (int)LaneTypes.GRASS)
+                        if (type == (int)LaneTypes.GRASS && 
+                            (lastLaneMem != (int)LaneTypes.WATER || i > 0)) //Evitar obstaculos a la orilla del rio, da problemas
                         {
                             newPos.y = 0.5f;                           
                             for (int j = leftMargin + 20; j < rightMargin - 20; j += 10)
@@ -79,7 +81,7 @@ public class ScenarioSpawner : MonoBehaviour {
                                 }
                             }
                         }
-                        else
+                        else if (type == (int)LaneTypes.WATER)
                         {
                             if (i % 2 == 0)
                             {
