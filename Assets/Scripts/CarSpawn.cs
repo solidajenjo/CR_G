@@ -14,7 +14,7 @@ public class CarSpawn : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        timer = Random.Range(0.0f, timeBetween);
+        timer = Random.Range(1.0f, timeBetween);
     }
 
     // Update is called once per frame

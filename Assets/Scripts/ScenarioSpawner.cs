@@ -12,6 +12,7 @@ public class ScenarioSpawner : MonoBehaviour {
     private int lastLane;
     public int sizeOfLane, obstacleSpawnPossibility;
     private int[] materialOfTheLane;
+    public int minSpeed, maxSpeed;
     enum LaneTypes
     {
         GRASS, WATER, ROAD, RAILROAD
@@ -89,7 +90,7 @@ public class ScenarioSpawner : MonoBehaviour {
                                 Rigidbody ts;
                                 ts = (Rigidbody)Instantiate(troncoSpawner, new Vector3(leftMargin, 2.0f, (troncoSpawnPos + increment * i).z), transform.rotation);
                                 ts.GetComponent<TroncoSpawn>().setDirection(1.0f);
-                                ts.GetComponent<TroncoSpawn>().speed = Random.Range(20, 60);
+                                ts.GetComponent<TroncoSpawn>().speed = Random.Range(minSpeed, maxSpeed);
                             }
                             else
                             {
@@ -98,7 +99,7 @@ public class ScenarioSpawner : MonoBehaviour {
                                 Rigidbody ts;
                                 ts = (Rigidbody) Instantiate(troncoSpawner, new Vector3(rightMargin, 2.0f, (troncoSpawnPos + increment * i).z), rot);
                                 ts.GetComponent<TroncoSpawn>().setDirection(-1.0f);
-                                ts.GetComponent<TroncoSpawn>().speed = Random.Range(20, 60);
+                                ts.GetComponent<TroncoSpawn>().speed = Random.Range(minSpeed, maxSpeed);
                             }
                         }
                     }
@@ -116,7 +117,7 @@ public class ScenarioSpawner : MonoBehaviour {
                     Rigidbody cs;
                     cs = (Rigidbody) Instantiate(carSpawner, new Vector3(leftMargin, 2.0f, newPos.z), transform.rotation);
                     CarSpawn carSpawn = cs.GetComponent<CarSpawn>();
-                    carSpawn.speed = Random.Range(20, 60);
+                    carSpawn.speed = (int)Random.Range(minSpeed, maxSpeed);
                     for (int i = 1; i < amount - 1; ++i)
                     {
                         int x = Random.Range(0, 100);
@@ -127,7 +128,7 @@ public class ScenarioSpawner : MonoBehaviour {
                             Vector3 carSpawnPos = newPos;
                             cs = (Rigidbody)Instantiate(carSpawner, new Vector3(leftMargin, 2.0f, (carSpawnPos + increment * i).z), transform.rotation);
                             carSpawn = cs.GetComponent<CarSpawn>();
-                            carSpawn.speed = Random.Range(20, 60);
+                            carSpawn.speed = (int) Random.Range(minSpeed, maxSpeed);
                         }
                         else
                         {
@@ -135,14 +136,14 @@ public class ScenarioSpawner : MonoBehaviour {
                             rot = Quaternion.Euler(0.0f, 180.0f, 0.0f);
                             cs = (Rigidbody)Instantiate(carSpawner, new Vector3(rightMargin, 2.0f, (carSpawnPos + increment * i).z), rot);
                             carSpawn = cs.GetComponent<CarSpawn>();
-                            carSpawn.speed = Random.Range(20, 60);
+                            carSpawn.speed = (int)Random.Range(minSpeed, maxSpeed);
                         }
                     }
                     Instantiate(lanes[4], newPos + increment * (amount - 1), transform.rotation);
                     rot = Quaternion.Euler(0.0f, 180.0f, 0.0f);
                     cs = (Rigidbody)Instantiate(carSpawner, new Vector3(rightMargin, 2.0f, (newPos + increment * (amount-1)).z), rot);
                     carSpawn = cs.GetComponent<CarSpawn>();
-                    carSpawn.speed = Random.Range(20, 60);
+                    carSpawn.speed = Random.Range(15, 30);
                     materialOfTheLane[((int)(newPos + increment * (amount - 1)).z % 1000) / 10] = type;
                     lastZ = newPos.z + increment.z * (amount - 1);                   
                 }

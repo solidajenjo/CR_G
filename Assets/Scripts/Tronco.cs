@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tronco : MonoBehaviour {
 
-    public float speed;
+    public int speed;
     private float direction;
     public float timeToLive, amplitude, atenuator, bounceTime;
     private float timer, bouncingTimer, timePassed;

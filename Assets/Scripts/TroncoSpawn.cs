@@ -8,7 +8,7 @@ public class TroncoSpawn : MonoBehaviour {
     public float minTime, maxTime;
     private float direction;
     private float timer;
-    public float speed;
+    public int speed;
 	// Use this for initialization
 	void Start () {
         timer = 0;

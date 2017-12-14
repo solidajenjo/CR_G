@@ -81,5 +81,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   car: {fileID: 114085100668295464, guid: fe9b31276b94d1d429022f1cd8b840f1, type: 2}
-  timeBetween: 5
+  timeBetween: 7
   speed: 0
