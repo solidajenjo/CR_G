@@ -26,7 +26,9 @@ public class CarSpawn : MonoBehaviour
             timer = Random.Range(1.0f, timeBetween);            
             Vector3 newPos = transform.position;
             newPos.y = 12.0f;
-            Instantiate<Car>(car, newPos, transform.rotation);
+            Car c;
+            c = (Car) Instantiate(car, newPos, transform.rotation);
+            c.speed = this.speed;
         }
     }
 }

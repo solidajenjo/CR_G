@@ -8,6 +8,7 @@ public class TroncoSpawn : MonoBehaviour {
     public float minTime, maxTime;
     private float direction;
     private float timer;
+    public float speed;
 	// Use this for initialization
 	void Start () {
         timer = 0;
@@ -18,7 +19,10 @@ public class TroncoSpawn : MonoBehaviour {
         timer -= Time.deltaTime;
 		if (timer <= 0)
         {
-            Instantiate(tronco, transform.position, transform.rotation).GetComponent<Tronco>().setDirection(direction);
+            Rigidbody t;
+            t = (Rigidbody)Instantiate(tronco, transform.position, transform.rotation);
+            t.GetComponent<Tronco>().setDirection(direction);
+            t.GetComponent<Tronco>().speed = this.speed;
             timer = Random.Range(minTime, maxTime);
         }
 	}
