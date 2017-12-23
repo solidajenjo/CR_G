@@ -5,7 +5,7 @@ using UnityEngine;
 public class CarSpawn : MonoBehaviour
 {
 
-    public Car car;
+    public Car[] car;
     public float timeBetween;
     private float timer;
     public int speed;
@@ -27,7 +27,7 @@ public class CarSpawn : MonoBehaviour
             Vector3 newPos = transform.position;
             newPos.y = 12.0f;
             Car c;
-            c = (Car) Instantiate(car, newPos, transform.rotation);
+            c = (Car) Instantiate(car[Random.Range(0,2)], newPos, transform.rotation);
             c.speed = this.speed;
         }
     }

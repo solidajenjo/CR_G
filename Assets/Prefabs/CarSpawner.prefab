@@ -80,6 +80,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e7ef0ba12db65489669f27a06fb727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  car: {fileID: 114085100668295464, guid: fe9b31276b94d1d429022f1cd8b840f1, type: 2}
+  car:
+  - {fileID: 114085100668295464, guid: fe9b31276b94d1d429022f1cd8b840f1, type: 2}
+  - {fileID: 114451437303708316, guid: 2e122cc3021abbb4780259119d219b4c, type: 2}
   timeBetween: 7
   speed: 0
