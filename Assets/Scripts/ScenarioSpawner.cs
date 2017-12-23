@@ -63,13 +63,22 @@ public class ScenarioSpawner : MonoBehaviour {
                     Vector3 increment = new Vector3(0.0f, 0.0f, 10.0f);
                     for (int i = 0; i < amount; ++i)
                     {
-                        Instantiate(lanes[type], newPos + increment * i, transform.rotation);
-                        materialOfTheLane[((int)(newPos + increment * i).z % 1000) / 10] = type;
+                        if (type == (int)LaneTypes.WATER && i == 0)
+                        {
+                            newPos.y = 0.5f;
+                            Instantiate(lanes[(int)LaneTypes.GRASS], newPos + increment * i, transform.rotation);
+                            materialOfTheLane[((int)(newPos + increment * i).z % 1000) / 10] = (int)LaneTypes.GRASS;
+                            newPos.y = -0.5f;
+                        }
+                        else
+                        {
+                            Instantiate(lanes[type], newPos + increment * i, transform.rotation);
+                            materialOfTheLane[((int)(newPos + increment * i).z % 1000) / 10] = type;
+                        }                        
                         int leftMargin = (int)(-sizeOfLane / 2);
                         while (leftMargin % 10 != 0) leftMargin += 1;
                         int rightMargin = (int)(sizeOfLane / 2);
-                        if (type == (int)LaneTypes.GRASS && 
-                            (lastLaneMem != (int)LaneTypes.WATER || i > 0)) //Evitar obstaculos a la orilla del rio, da problemas
+                        if (type == (int)LaneTypes.GRASS) //Evitar obstaculos a la orilla del rio, da problemas
                         {
                             newPos.y = 0.5f;                           
                             for (int j = leftMargin + 20; j < rightMargin - 20; j += 10)
@@ -77,14 +86,14 @@ public class ScenarioSpawner : MonoBehaviour {
                                 int spawnPossibility = Random.Range(0, 100);
                                 if (spawnPossibility < obstacleSpawnPossibility)
                                 {
-                                    int which = Random.Range(0, obstacles.Length - 1);        
+                                    int which = Random.Range(0, obstacles.Length);        
                                     Instantiate(obstacles[which], new Vector3((float)j, 0.0f, (newPos + increment * i).z), transform.rotation);
                                 }
                             }
                         }
                         else if (type == (int)LaneTypes.WATER)
                         {
-                            if (i % 2 == 0)
+                            if (i % 2 == 0 && i > 0)
                             {
                                 Vector3 troncoSpawnPos = newPos;
                                 Rigidbody ts;
@@ -92,7 +101,7 @@ public class ScenarioSpawner : MonoBehaviour {
                                 ts.GetComponent<TroncoSpawn>().setDirection(1.0f);
                                 ts.GetComponent<TroncoSpawn>().speed = Random.Range(minSpeed, maxSpeed);
                             }
-                            else
+                            else if (i > 0)
                             {
                                 Vector3 troncoSpawnPos = newPos;
                                 Quaternion rot = Quaternion.Euler(0.0f, 180.0f, 0.0f);
@@ -102,6 +111,12 @@ public class ScenarioSpawner : MonoBehaviour {
                                 ts.GetComponent<TroncoSpawn>().speed = Random.Range(minSpeed, maxSpeed);
                             }
                         }
+                    }
+                    if (type == (int)LaneTypes.WATER)
+                    {
+                        newPos.y = 0.5f;
+                        Instantiate(lanes[(int)LaneTypes.GRASS], newPos + increment * amount, transform.rotation);
+                        amount++;
                     }
                     lastZ = newPos.z + increment.z * (amount - 1);
                 }

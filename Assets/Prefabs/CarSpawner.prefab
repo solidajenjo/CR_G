@@ -83,5 +83,6 @@ MonoBehaviour:
   car:
   - {fileID: 114085100668295464, guid: fe9b31276b94d1d429022f1cd8b840f1, type: 2}
   - {fileID: 114451437303708316, guid: 2e122cc3021abbb4780259119d219b4c, type: 2}
+  - {fileID: 114265881054670538, guid: ea6a9cbe22263db4788b98cacf5f82b7, type: 2}
   timeBetween: 7
   speed: 0

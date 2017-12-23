@@ -77,6 +77,14 @@ public class Player : MonoBehaviour {
     void Update () {
         if (dead) return;
         frameCounter++;
+        if (scenarioSpawn.getFloorMaterial((int)transform.position.z) == "water"
+            && moving == (int)Movements.STILL)
+        {
+            if (troncoTranslator == null && !dead)
+            {
+                setDrowned();
+            }
+        }
         if (frameCounter % skipRate == 0) ambientSoundController.updateEnvironment(transform.position.z); //OPTIMIZATION
         if (recieveSwear)
         {
@@ -197,14 +205,7 @@ public class Player : MonoBehaviour {
                     lastZ = transform.position.z;
                 }
                 moving = (int)Movements.STILL;
-                chickenClucking.Pause();
-                if (scenarioSpawn.getFloorMaterial((int)transform.position.z) == "water")
-                {
-                    if (troncoTranslator == null && !dead)
-                    {
-                        setDrowned();
-                    }
-                }
+                chickenClucking.Pause();                
             }
         }
     }
