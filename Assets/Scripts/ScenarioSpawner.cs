@@ -58,7 +58,11 @@ public class ScenarioSpawner : MonoBehaviour {
                 int amount = Random.Range(3, 6);
                 if (type == (int)LaneTypes.GRASS || type == (int)LaneTypes.WATER)
                 {
-                    if (type == (int)LaneTypes.GRASS) newPos.y = 0.5f;
+                    if (type == (int)LaneTypes.GRASS)
+                    {
+                        newPos.y = 0.5f;
+                        --amount;
+                    }
                     else newPos.y = -0.5f;
                     Vector3 increment = new Vector3(0.0f, 0.0f, 10.0f);
                     for (int i = 0; i < amount; ++i)
