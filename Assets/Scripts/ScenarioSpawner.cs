@@ -13,12 +13,14 @@ public class ScenarioSpawner : MonoBehaviour {
     public int sizeOfLane, obstacleSpawnPossibility;
     private int[] materialOfTheLane;
     public int minSpeed, maxSpeed;
+    private int scenario;
     enum LaneTypes
     {
         GRASS, WATER, ROAD, RAILROAD
     };
     // Use this for initialization
     void Start () {
+        scenario = 0;
         lastZ = transform.position.z;
         lastLane = -1;
         materialOfTheLane = new int[1000];
@@ -34,14 +36,26 @@ public class ScenarioSpawner : MonoBehaviour {
     {
         if (zPos < 0) return "grass";
         int type = materialOfTheLane[(zPos % 1000) / 10];
-        if (type == (int)LaneTypes.GRASS) return "grass";
-        else if (type == (int)LaneTypes.WATER) return "water";
+        if (type == (int)LaneTypes.GRASS)
+        {
+            if (scenario == 0) return "grass";
+            else if (scenario == 1) return "dirt";
+            else return "grass"; //TODO: sky
+        }
+        else if (type == (int)LaneTypes.WATER)
+        {
+            if (scenario == 0) return "water";
+            else if (scenario == 1) return "Lava";
+            else return "water"; //TODO: void
+        }
         else if (type == (int)LaneTypes.ROAD) return "road";
         else return "railroad";
     }
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "asphalt" || other.tag == "grass" || other.tag == "water")
+        scenario = (int) (lastZ / 500) % 30; //Cada 50 pasos cambio de escenario. Escenario de cueva empezado.
+        Debug.Log("Last Z = " + lastZ.ToString());
+        if (other.tag == "asphalt" || other.tag == "grass" || other.tag == "water" || other.tag == "dirt" || other.tag == "Lava")
         {
             Vector3 newPos = transform.position;
             newPos.x = 0.0f;
@@ -70,14 +84,30 @@ public class ScenarioSpawner : MonoBehaviour {
                         if (type == (int)LaneTypes.WATER && i == 0)
                         {
                             newPos.y = 0.5f;
-                            Instantiate(lanes[(int)LaneTypes.GRASS], newPos + increment * i, transform.rotation);
-                            materialOfTheLane[((int)(newPos + increment * i).z % 1000) / 10] = (int)LaneTypes.GRASS;
+                            if (scenario == 1)
+                            {
+                                Instantiate(lanes[(int)LaneTypes.GRASS + 6], newPos + increment * i, transform.rotation);
+                                materialOfTheLane[((int)(newPos + increment * i).z % 1000) / 10] = (int)LaneTypes.GRASS + 6;
+                            }
+                            else
+                            {
+                                Instantiate(lanes[(int)LaneTypes.GRASS], newPos + increment * i, transform.rotation);
+                                materialOfTheLane[((int)(newPos + increment * i).z % 1000) / 10] = (int)LaneTypes.GRASS;
+                            }
                             newPos.y = -0.5f;
                         }
                         else
                         {
-                            Instantiate(lanes[type], newPos + increment * i, transform.rotation);
-                            materialOfTheLane[((int)(newPos + increment * i).z % 1000) / 10] = type;
+                            if (scenario == 1)
+                            {
+                                Instantiate(lanes[type + 6], newPos + increment * i, transform.rotation);
+                                materialOfTheLane[((int)(newPos + increment * i).z % 1000) / 10] = type + 6;
+                            }
+                            else
+                            {
+                                Instantiate(lanes[type], newPos + increment * i, transform.rotation);
+                                materialOfTheLane[((int)(newPos + increment * i).z % 1000) / 10] = type;
+                            }
                         }                        
                         int leftMargin = (int)(-sizeOfLane / 2);
                         while (leftMargin % 10 != 0) leftMargin += 1;
@@ -90,7 +120,8 @@ public class ScenarioSpawner : MonoBehaviour {
                                 int spawnPossibility = Random.Range(0, 100);
                                 if (spawnPossibility < obstacleSpawnPossibility)
                                 {
-                                    int which = Random.Range(0, obstacles.Length);        
+                                    int which = 1;
+                                    if (scenario != 1) which = Random.Range(0, obstacles.Length);
                                     Instantiate(obstacles[which], new Vector3((float)j, 0.0f, (newPos + increment * i).z), transform.rotation);
                                 }
                             }
@@ -119,7 +150,8 @@ public class ScenarioSpawner : MonoBehaviour {
                     if (type == (int)LaneTypes.WATER)
                     {
                         newPos.y = 0.5f;
-                        Instantiate(lanes[(int)LaneTypes.GRASS], newPos + increment * amount, transform.rotation);
+                        if (scenario == 1) Instantiate(lanes[(int)LaneTypes.GRASS + 6], newPos + increment * amount, transform.rotation);
+                        else Instantiate(lanes[(int)LaneTypes.GRASS], newPos + increment * amount, transform.rotation);
                         amount++;
                     }
                     lastZ = newPos.z + increment.z * (amount - 1);

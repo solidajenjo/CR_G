@@ -6949,6 +6949,8 @@ MonoBehaviour:
   - {fileID: 54571574121393004, guid: 7fa3990520dac454e8171c08fcfbc55c, type: 2}
   - {fileID: 54825758057470644, guid: a5b58c2f429c12a47976d5b5b82cbf0f, type: 2}
   - {fileID: 54956275126289426, guid: 8fe83a05e23dccd4e9408c821787e3b0, type: 2}
+  - {fileID: 54903219127387346, guid: 552b539bdee23f341b1ab23bbcd5e2b1, type: 2}
+  - {fileID: 54832264268030082, guid: 87b6cabedf939d541a94efeed32094ab, type: 2}
   obstacles:
   - {fileID: 54998297401205808, guid: e1b6787e3f54f8941af83e59743008ff, type: 2}
   - {fileID: 54060210965184788, guid: d33e47b01b28e4442905664663df4bdb, type: 2}
