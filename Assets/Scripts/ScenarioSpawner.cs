@@ -16,7 +16,7 @@ public class ScenarioSpawner : MonoBehaviour {
     private int scenario;
     enum LaneTypes
     {
-        GRASS, WATER, ROAD, RAILROAD
+        GRASS, WATER, ROAD, RAILROAD, DIRT, LAVA
     };
     // Use this for initialization
     void Start () {
@@ -31,24 +31,21 @@ public class ScenarioSpawner : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown(KeyCode.Escape)) SceneManager.LoadScene("mainMenu", LoadSceneMode.Single);
     }
-
+    public int getScenario()
+    {
+        return scenario;
+    }
     public string getFloorMaterial(int zPos)
     {
+        //INTENTA MANTENER EN MATERIAL OF THE LANE EL TIPO EXACTO
+        //PARA EFECTOS Y MUERTES DISTINTAS
+        //NO ES LO MISMO CAER EN LA LAVA QUE EN EL AGUA Y HAY QUE PODER DIFERENCIARLOS
         if (zPos < 0) return "grass";
         int type = materialOfTheLane[(zPos % 1000) / 10];
-        if (type == (int)LaneTypes.GRASS)
-        {
-            if (scenario == 0) return "grass";
-            else if (scenario == 1) return "dirt";
-            else return "grass"; //TODO: sky
-        }
-        else if (type == (int)LaneTypes.WATER)
-        {
-            if (scenario == 0) return "water";
-            else if (scenario == 1) return "Lava";
-            else return "water"; //TODO: void
-        }
-        else if (type == (int)LaneTypes.ROAD) return "road";
+        if (type == (int)LaneTypes.GRASS) return "grass";            
+        else if (type == (int)LaneTypes.WATER) return "water";
+        else if (type == (int)LaneTypes.LAVA) return "Lava";                
+        else if (type == (int)LaneTypes.DIRT) return "dirt";
         else return "railroad";
     }
     void OnTriggerExit(Collider other)
@@ -87,7 +84,7 @@ public class ScenarioSpawner : MonoBehaviour {
                             if (scenario == 1)
                             {
                                 Instantiate(lanes[(int)LaneTypes.GRASS + 6], newPos + increment * i, transform.rotation);
-                                materialOfTheLane[((int)(newPos + increment * i).z % 1000) / 10] = (int)LaneTypes.GRASS + 6;
+                                materialOfTheLane[((int)(newPos + increment * i).z % 1000) / 10] = (int)LaneTypes.DIRT;
                             }
                             else
                             {
@@ -101,7 +98,10 @@ public class ScenarioSpawner : MonoBehaviour {
                             if (scenario == 1)
                             {
                                 Instantiate(lanes[type + 6], newPos + increment * i, transform.rotation);
-                                materialOfTheLane[((int)(newPos + increment * i).z % 1000) / 10] = type + 6;
+                                if (type == (int)LaneTypes.GRASS)
+                                    materialOfTheLane[((int)(newPos + increment * i).z % 1000) / 10] = (int)LaneTypes.DIRT;
+                                if (type == (int)LaneTypes.WATER)
+                                    materialOfTheLane[((int)(newPos + increment * i).z % 1000) / 10] = (int)LaneTypes.LAVA;
                             }
                             else
                             {

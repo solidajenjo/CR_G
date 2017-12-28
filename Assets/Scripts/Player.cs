@@ -74,10 +74,15 @@ public class Player : MonoBehaviour {
         chickenClucking.Pause();
     }
 
+    public string getFloorMaterial()
+    {
+        return scenarioSpawn.getFloorMaterial((int)transform.position.z);
+    }
     void Update () {
         if (dead) return;
         frameCounter++;
-        if (scenarioSpawn.getFloorMaterial((int)transform.position.z) == "water"
+        if ((scenarioSpawn.getFloorMaterial((int)transform.position.z) == "water"
+            || scenarioSpawn.getFloorMaterial((int)transform.position.z) == "Lava")
             && moving == (int)Movements.STILL)
         {
             if (troncoTranslator == null && !dead)

@@ -6,6 +6,7 @@ public class CarSpawn : MonoBehaviour
 {
 
     public Car[] car;
+    public int type;
     public float timeBetween;
     private float timer;
     public int speed;
@@ -26,9 +27,10 @@ public class CarSpawn : MonoBehaviour
             timer = Random.Range(2.0f, timeBetween);            
             Vector3 newPos = transform.position;
             newPos.y = 12.0f;
-            Car c;
-            c = (Car) Instantiate(car[Random.Range(0,3)], newPos, transform.rotation);
-            c.speed = this.speed;
+            Car c = null;
+            if (type == 0) c = (Car) Instantiate(car[Random.Range(0,3)], newPos, transform.rotation);
+            else if (type == 1) c = (Car)Instantiate(car[0], newPos, transform.rotation);
+            c.speed = this.speed;            
         }
     }
 }

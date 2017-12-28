@@ -6,7 +6,10 @@ public class AmbientSounds : MonoBehaviour {
 
     public AudioSource[] environmentAudios;
     public ScenarioSpawner scenarioSpawn;
+    public Player player;
+    public Light dayLight, hellLight;
     private int waterPlaying, roadPlaying, grassPlaying;
+    private bool hellPlaying;
     // Use this for initialization
     void Start()
     {
@@ -16,12 +19,21 @@ public class AmbientSounds : MonoBehaviour {
         environmentAudios[0].Play();
         environmentAudios[1].Play();
         environmentAudios[2].Play();
+        hellPlaying = false;        
+        hellLight.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+        if ((player.getFloorMaterial() == "dirt" || player.getFloorMaterial() == "Lava")
+            && !hellPlaying)
+        {
+            environmentAudios[3].Play();
+            hellPlaying = true;
+            dayLight.enabled = false;
+            hellLight.enabled = true;
+        }
     }
 
     public void updateEnvironment(float zPos)
