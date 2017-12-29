@@ -6,7 +6,6 @@ public class ScenarioSpawner : MonoBehaviour {
 
     public Rigidbody[] lanes;
     public Rigidbody[] obstacles;
-    public Rigidbody[] lavaObstacles;
     public Rigidbody trainSpawner, troncoSpawner;
     public Rigidbody carSpawner, wagonSpawner, avionSpawner;
     public Player player;
@@ -248,8 +247,9 @@ public class ScenarioSpawner : MonoBehaviour {
                                     int spawnPossibility = Random.Range(0, 100);
                                     if (spawnPossibility < obstacleSpawnPossibility)
                                     {
-                                        int which = Random.Range(0, lavaObstacles.Length);
-                                        Instantiate(lavaObstacles[which], new Vector3((float)j, 0.0f, (newPos + increment * i).z), lavaObstacles[which].transform.rotation);
+                                        int which = 1;
+                                        if (scenario != 1) which = Random.Range(0, obstacles.Length);
+                                        Instantiate(obstacles[which], new Vector3((float)j, 0.0f, (newPos + increment * i).z), transform.rotation);
                                     }
                                 }
                             }
