@@ -17,6 +17,7 @@ TagManager:
   - kk
   - dirt
   - Lava
+  - column
   layers:
   - Default
   - TransparentFX
