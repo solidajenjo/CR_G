@@ -127,8 +127,9 @@ public class Player : MonoBehaviour {
                 anim.SetBool("moving", true);
                 origin = translator.position;
                 destination = translator.position + new Vector3(0.0f, 0.0f, 10.0f);
-                if (destination.x % 10 != 0 && 
-                    scenarioSpawn.getFloorMaterial((int)destination.z) != "water") //Corrección al saltar desde un tronco fuera del agua
+                if (destination.x % 10 != 0 
+                    && scenarioSpawn.getFloorMaterial((int)destination.z) != "water"
+                    && scenarioSpawn.getFloorMaterial((int)destination.z) != "Lava") //Corrección al saltar desde un tronco fuera del agua
                    
                 {
                     float xDisp = destination.x % 10;
@@ -216,6 +217,9 @@ public class Player : MonoBehaviour {
     }
     public void setDrowned()
     {
+        Debug.Log("SLOW MO");
+        Time.timeScale = 0.5f;
+        Time.fixedDeltaTime = 0.02F * Time.timeScale;
         this.GetComponent<Rigidbody>().useGravity = true;
         scenarioDestroyerWhenDead.gameObject.SetActive(true);
         anim.SetBool("moving", true);
@@ -234,7 +238,7 @@ public class Player : MonoBehaviour {
     }
     public void setNuked()
     {
-        tipCam.gameObject.SetActive(true);
+        tipCam.gameObject.SetActive(true);        
         if (scenarioSpawn.getFloorMaterial((int)transform.position.z) == "water")
         {
             setDrowned();
@@ -273,6 +277,9 @@ public class Player : MonoBehaviour {
 
     public void setPlainChicken()
     {
+        Debug.Log("SLOW MO");
+        Time.timeScale = 0.3f;
+        Time.fixedDeltaTime = 0.02F * Time.timeScale;
         plainChicken.gameObject.SetActive(true);
         this.gameObject.SetActive(false);
         if (!tipCam.IsActive()) tipRoad.gameObject.SetActive(true);

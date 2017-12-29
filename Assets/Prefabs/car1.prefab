@@ -686,7 +686,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 478f4ba1fa2c9de41b24570ab3a61353, type: 2}
+  - {fileID: 2100000, guid: f62270f39819f9f4ebf878a27adbd3bc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1428,6 +1428,8 @@ MonoBehaviour:
   - {fileID: 82919809634652104}
   - {fileID: 82047432565378626}
   horn: {fileID: 82173321264016952}
+  isWagon: 0
+  anim: {fileID: 0}
 --- !u!114 &114571852772613868
 MonoBehaviour:
   m_ObjectHideFlags: 1

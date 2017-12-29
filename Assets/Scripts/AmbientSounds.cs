@@ -9,30 +9,51 @@ public class AmbientSounds : MonoBehaviour {
     public Player player;
     public Light dayLight, hellLight;
     private int waterPlaying, roadPlaying, grassPlaying;
-    private bool hellPlaying;
+    private bool hellPlaying, heavenPlaying;
+    private bool fadeOut;
     // Use this for initialization
     void Start()
     {
+        fadeOut = false;
         waterPlaying = 0;
         roadPlaying = 0;
         grassPlaying = 0;
         environmentAudios[0].Play();
         environmentAudios[1].Play();
         environmentAudios[2].Play();
-        hellPlaying = false;        
+        hellPlaying = false;
+        heavenPlaying = false;
         hellLight.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if ((player.getFloorMaterial() == "dirt" || player.getFloorMaterial() == "Lava")
+        if (player.isDead())
+        {
+            fadeOut = true;
+        }
+        if (fadeOut)
+        {
+            environmentAudios[3].volume -= Time.deltaTime / 4;
+            environmentAudios[4].volume -= Time.deltaTime / 4;
+        }
+        if ((player.getFloorMaterial() == "dirt" || player.getFloorMaterial() == "Lava"
+            || player.getFloorMaterial() == "wagon")
             && !hellPlaying)
         {
             environmentAudios[3].Play();
             hellPlaying = true;
             dayLight.enabled = false;
             hellLight.enabled = true;
+        }
+        if ((player.getFloorMaterial() == "void" || player.getFloorMaterial() == "cloud")
+            && !heavenPlaying)
+        {
+            environmentAudios[4].Play();
+            heavenPlaying = true;
+            dayLight.enabled = true;
+            hellLight.enabled = false;
         }
     }
 

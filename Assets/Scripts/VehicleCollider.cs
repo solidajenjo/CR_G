@@ -18,7 +18,6 @@ public class VehicleCollider : MonoBehaviour {
     {
         if (other.tag == "vehicle")
         {
-            Debug.Log("CHOQUE");
             try {
                 Player player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Player>();
                 player.setPlainChicken();

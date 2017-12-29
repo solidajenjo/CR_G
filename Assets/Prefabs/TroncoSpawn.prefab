@@ -81,5 +81,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tronco: {fileID: 54936571990228414, guid: 1b4c3c93235fc864494e734f91ac6427, type: 2}
+  nube: {fileID: 54453468908450410, guid: 0b392982fd1425140aa29a7a04e2d67a, type: 2}
   minTime: 1.5
   maxTime: 3.5
+  speed: 0
+  isCloud: 0

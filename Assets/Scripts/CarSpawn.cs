@@ -11,7 +11,6 @@ public class CarSpawn : MonoBehaviour
     private float timer;
     public int speed;
 
-
     // Use this for initialization
     void Start()
     {
@@ -30,7 +29,7 @@ public class CarSpawn : MonoBehaviour
             Car c = null;
             if (type == 0) c = (Car) Instantiate(car[Random.Range(0,3)], newPos, transform.rotation);
             else if (type == 1) c = (Car)Instantiate(car[0], newPos, transform.rotation);
-            c.speed = this.speed;            
+            c.speed = this.speed; 
         }
     }
 }

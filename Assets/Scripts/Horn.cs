@@ -6,8 +6,10 @@ public class Horn : MonoBehaviour {
 
     public AudioSource[] swearingWords;
     public AudioSource horn;
+    public bool isWagon;
+    public Animator anim;
     void Start () {
-		
+                
 	}
 	
 	// Update is called once per frame
@@ -21,12 +23,17 @@ public class Horn : MonoBehaviour {
         {
             horn.Play();            
             Player player = other.GetComponent<Player>();
-            if (player.canBeSweared())
+            Debug.Log(swearingWords);
+            if (player.canBeSweared() && !isWagon)
             {
                 player.getSweared();
+                Debug.Log("SWEAR");
                 int swear = Random.Range(0, swearingWords.Length);
                 swearingWords[swear].Play();
-            }            
+            }else if (isWagon)
+            {
+                anim.Play("laugh");
+            }
         }
     }
 }
