@@ -40,9 +40,6 @@ public class ScenarioSpawner : MonoBehaviour {
     }
     public string getFloorMaterial(int zPos)
     {
-        //INTENTA MANTENER EN MATERIAL OF THE LANE EL TIPO EXACTO
-        //PARA EFECTOS Y MUERTES DISTINTAS
-        //NO ES LO MISMO CAER EN LA LAVA QUE EN EL AGUA Y HAY QUE PODER DIFERENCIARLOS
         if (zPos < 0) return "grass";
         int type = materialOfTheLane[(zPos % 1000) / 10];
         if (type == (int)LaneTypes.GRASS) return "grass";            
@@ -102,7 +99,7 @@ public class ScenarioSpawner : MonoBehaviour {
                                     if (spawnPossibility < obstacleSpawnPossibility)
                                     {
                                         int which = 1;
-                                        if (scenario != 1) which = Random.Range(0, obstacles.Length);
+                                        if (scenario != 1) which = Random.Range(0, 2);
                                         Instantiate(obstacles[which], new Vector3((float)j, 0.0f, (newPos + increment * i).z), transform.rotation);
                                     }
                                 }
@@ -245,11 +242,9 @@ public class ScenarioSpawner : MonoBehaviour {
                                 for (int j = leftMargin + 20; j < rightMargin - 20; j += 10)
                                 {
                                     int spawnPossibility = Random.Range(0, 100);
-                                    if (spawnPossibility < obstacleSpawnPossibility)
+                                    if (spawnPossibility < obstacleSpawnPossibility * 5)
                                     {
-                                        int which = 1;
-                                        if (scenario != 1) which = Random.Range(0, obstacles.Length);
-                                        Instantiate(obstacles[which], new Vector3((float)j, 0.0f, (newPos + increment * i).z), transform.rotation);
+                                        Instantiate(obstacles[2], new Vector3((float)j, 0.0f, (newPos + increment * i).z), Quaternion.Euler(new Vector3(90.0f, 0.0f, 0.0f)));
                                     }
                                 }
                             }
@@ -406,6 +401,7 @@ public class ScenarioSpawner : MonoBehaviour {
                                 rot = Quaternion.Euler(0.0f, 180.0f, 0.0f);
                                 cs = (Rigidbody)Instantiate(avionSpawner, new Vector3(rightMargin, 2.0f, (carSpawnPos + increment * i).z), rot);
                                 carSpawn = cs.GetComponent<CarSpawn>();
+                                carSpawn.isRight = true;
                                 carSpawn.speed = (int)Random.Range(minSpeed * 1.5f, maxSpeed * 1.5f);
                             }
                         }

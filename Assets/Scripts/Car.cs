@@ -30,4 +30,10 @@ public class Car : MonoBehaviour {
         if (timer <= 0) Destroy(gameObject);
 	}
 
+    public void flip()
+    {
+        transform.Rotate(new Vector3(0.0f, 180.0f, 0.0f));
+        speed = -speed;
+    }
+
 }

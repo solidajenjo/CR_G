@@ -45,6 +45,7 @@ public class Player : MonoBehaviour {
     public CameraScript camera;
     private int frameCounter;
     public int skipRate;
+    private bool splash;
     void Start () {
         moving = (int)Movements.STILL;
         troncoTranslator = null;
@@ -72,6 +73,7 @@ public class Player : MonoBehaviour {
         tipCam.gameObject.SetActive(false);
         chickenClucking.Play();
         chickenClucking.Pause();
+        splash = true;
     }
 
     public string getFloorMaterial()
@@ -82,11 +84,14 @@ public class Player : MonoBehaviour {
         if (dead) return;
         frameCounter++;
         if ((scenarioSpawn.getFloorMaterial((int)transform.position.z) == "water"
-            || scenarioSpawn.getFloorMaterial((int)transform.position.z) == "Lava")
+            || scenarioSpawn.getFloorMaterial((int)transform.position.z) == "Lava"
+            || scenarioSpawn.getFloorMaterial((int)transform.position.z) == "void")
             && moving == (int)Movements.STILL)
         {
             if (troncoTranslator == null && !dead)
             {
+                if (scenarioSpawn.getFloorMaterial((int)transform.position.z) == "Lava"
+                    || scenarioSpawn.getFloorMaterial((int)transform.position.z) == "void") splash = false;
                 setDrowned();
             }
         }
@@ -224,7 +229,8 @@ public class Player : MonoBehaviour {
         scenarioDestroyerWhenDead.gameObject.SetActive(true);
         anim.SetBool("moving", true);
         moving += 1;
-        Instantiate(waterSplash, transform.position, transform.rotation);
+        if (splash) Instantiate(waterSplash, transform.position, transform.rotation);
+        this.GetComponent<Rigidbody>().AddForce(new Vector3(0.0f, -2000.0f, 0.0f));
         dead = true;
         gameOver.SetActive(true);
         if (!tipCam.IsActive()) tipSwim.gameObject.SetActive(true);
@@ -302,7 +308,29 @@ public class Player : MonoBehaviour {
     {
         return score;
     }
-
+    public void recieveKick()
+    {
+        Debug.Log("OUCH");
+        chickenClucking.UnPause();
+        moving = (int)Movements.MOVING_BACK;
+        originRot = transform.rotation;
+        finalRot = originRot;
+        movementTimer = durationOfMovement;
+        anim.SetBool("moving", true);
+        origin = translator.position;
+        destination = translator.position + new Vector3(0.0f, 0.0f, -10.0f);
+        float zDisp = destination.z % 10;
+        if (zDisp > 5)
+        {
+            destination.z += 10 - zDisp;
+        }
+        else
+        {
+            destination.z -= zDisp;
+        }
+        journeyLength = Vector3.Distance(origin, destination);
+        startTime = Time.time;
+    }
     public bool isDead()
     {
         return dead;
@@ -315,6 +343,7 @@ public class Player : MonoBehaviour {
             lateralSpeed = other.GetComponent<Tronco>().getSpeed();
             other.GetComponent<Tronco>().setBouncing();
         }
+        
     }
 
     void OnTriggerExit(Collider other)
@@ -324,5 +353,5 @@ public class Player : MonoBehaviour {
             troncoTranslator = null;
         }
     }
-
+    
 }

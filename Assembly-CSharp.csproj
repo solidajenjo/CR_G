@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\AmbientSounds.cs" />
+     <Compile Include="Assets\Scripts\AngelFeet.cs" />
      <Compile Include="Assets\Scripts\Blood.cs" />
      <Compile Include="Assets\Scripts\BloodWaterSpawn.cs" />
      <Compile Include="Assets\Scripts\CameraScript.cs" />
@@ -61,6 +62,9 @@
      <Compile Include="Assets\Scripts\fps.cs" />
      <Compile Include="Assets\Scripts\Horn.cs" />
      <Compile Include="Assets\Scripts\Humo.cs" />
+     <Compile Include="Assets\Scripts\KickTrigger.cs" />
+     <Compile Include="Assets\Scripts\lavaColumn.cs" />
+     <Compile Include="Assets\Scripts\LavaTrapSc.cs" />
      <Compile Include="Assets\Scripts\MainScreenGrass.cs" />
      <Compile Include="Assets\Scripts\MovingColliders.cs" />
      <Compile Include="Assets\Scripts\NukeExplosion.cs" />

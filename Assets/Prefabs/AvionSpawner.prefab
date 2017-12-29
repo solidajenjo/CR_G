@@ -35,8 +35,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1944509486115526}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 115.67313, y: 81.983696, z: 301.9495}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -120, y: 2, z: 200}
   m_LocalScale: {x: 9.62, y: 14.89, z: 9.62}
   m_Children: []
   m_Father: {fileID: 0}
@@ -82,6 +82,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   car:
   - {fileID: 114712088992670784, guid: aec3f62fcff5e2b47a185c94e4ae096f, type: 2}
-  type: 1
+  - {fileID: 114070381753644662, guid: d4060ff1664e1524096609af57a5e8e6, type: 2}
+  type: 2
   timeBetween: 3
-  speed: 0
+  speed: 41
+  isRight: 0
