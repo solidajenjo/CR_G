@@ -12,6 +12,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 6af7378a45ad6da4992a71ef50ddc2eb UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 af723155c251fcfa0e66530a75f3ea4c UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 cbd72600f8b1714dc34b8d15b9daaae8 Assembly-CSharp.dll:.TroncoSpawn
+7ba1e84ad3d2d8813486668e75f842ce Assembly-CSharp.dll:.FriedChickenLogo
 a35dc9cca2faebc5f5f1aeb9e8e47bbe UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
 49cd62a578efc0a599b810a2b66cd49c UnityEngine.UI.dll:UnityEngine.UI.Button
@@ -169,4 +170,3 @@ fa0455ffd8f5564ad294c1102993bbcd Assembly-CSharp.dll:.lavaColumn
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ScenarioDestroyer
 ab4e912b47dc8313f0656764c6703089 Assembly-CSharp.dll:.WaterDrop
 4bebdfe066b7ebeb82ae504a66736444 Assembly-CSharp.dll:.Wheel
-7ba1e84ad3d2d8813486668e75f842ce Assembly-CSharp.dll:.FriedChickenLogo

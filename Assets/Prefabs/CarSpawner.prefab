@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b2d5e463c868c1478119af3edb39941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  playerTrans: {fileID: 0}
   distanceToDestroy: 100
 --- !u!114 &114755619309846230
 MonoBehaviour:
@@ -99,6 +99,6 @@ MonoBehaviour:
   - {fileID: 114451437303708316, guid: 2e122cc3021abbb4780259119d219b4c, type: 2}
   - {fileID: 114265881054670538, guid: ea6a9cbe22263db4788b98cacf5f82b7, type: 2}
   type: 0
-  timeBetween: 7
+  timeBetween: 4
   speed: 0
   isRight: 0
