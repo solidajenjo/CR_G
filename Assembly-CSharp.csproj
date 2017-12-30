@@ -53,6 +53,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\AmbientSounds.cs" />
      <Compile Include="Assets\Scripts\AngelFeet.cs" />
+     <Compile Include="Assets\Scripts\AutoDestroyer.cs" />
      <Compile Include="Assets\Scripts\Blood.cs" />
      <Compile Include="Assets\Scripts\BloodWaterSpawn.cs" />
      <Compile Include="Assets\Scripts\CameraScript.cs" />
@@ -60,6 +61,8 @@
      <Compile Include="Assets\Scripts\CarSpawn.cs" />
      <Compile Include="Assets\Scripts\Feathers.cs" />
      <Compile Include="Assets\Scripts\fps.cs" />
+     <Compile Include="Assets\Scripts\FriedChickenLogo.cs" />
+     <Compile Include="Assets\Scripts\HelixRot.cs" />
      <Compile Include="Assets\Scripts\Horn.cs" />
      <Compile Include="Assets\Scripts\Humo.cs" />
      <Compile Include="Assets\Scripts\KickTrigger.cs" />

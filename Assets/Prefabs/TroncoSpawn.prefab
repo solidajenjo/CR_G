@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 54136348062720004}
   - component: {fileID: 114236450200530770}
   - component: {fileID: 65892910526745290}
+  - component: {fileID: 114974163227862362}
   m_Layer: 0
   m_Name: TroncoSpawn
   m_TagString: Untagged
@@ -81,8 +82,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tronco: {fileID: 54936571990228414, guid: 1b4c3c93235fc864494e734f91ac6427, type: 2}
-  nube: {fileID: 54453468908450410, guid: 0b392982fd1425140aa29a7a04e2d67a, type: 2}
+  nube: {fileID: 54938914323243104, guid: 0b392982fd1425140aa29a7a04e2d67a, type: 2}
   minTime: 1.5
   maxTime: 3.5
   speed: 0
   isCloud: 0
+--- !u!114 &114974163227862362
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1441142276089626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b2d5e463c868c1478119af3edb39941, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  distanceToDestroy: 100

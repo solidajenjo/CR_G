@@ -39,9 +39,10 @@ GameObject:
   - component: {fileID: 4562395433284550}
   - component: {fileID: 114789034321503106}
   - component: {fileID: 54794564504436798}
+  - component: {fileID: 114111848042624248}
   m_Layer: 0
   m_Name: LavaTrap
-  m_TagString: Untagged
+  m_TagString: dirt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61,7 +62,7 @@ GameObject:
   - component: {fileID: 114174107197403530}
   m_Layer: 0
   m_Name: Columna
-  m_TagString: column
+  m_TagString: Lava
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,8 +87,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1921538144063790}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.000000023841858, z: 0.2}
-  m_LocalScale: {x: 227.8, y: 277.3, z: 235.6}
+  m_LocalPosition: {x: 0, y: -0.00000038146973, z: 0.63}
+  m_LocalScale: {x: 227.8, y: 277.3, z: 389.9}
   m_Children: []
   m_Father: {fileID: 4562395433284550}
   m_RootOrder: 0
@@ -99,7 +100,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1549598614667756}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -10, y: 0, z: 440}
+  m_LocalPosition: {x: 17.73622, y: 19.546701, z: 267.3766}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 4524605027615480}
@@ -241,8 +242,21 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.0049662674, y: 0.00496627, z: 0.013456178}
-  m_Center: {x: 0, y: -4.656614e-10, z: 0.0042449553}
+  m_Size: {x: 0.0049662674, y: 0.004966267, z: 0.013456178}
+  m_Center: {x: 0, y: -4.656614e-10, z: 0.006244955}
+--- !u!114 &114111848042624248
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1549598614667756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b2d5e463c868c1478119af3edb39941, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  distanceToDestroy: 100
 --- !u!114 &114174107197403530
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -254,8 +268,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a06133f0ee884a408a1cc7bb0a18442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 1
-  speed: -6
+  duration: 0.02
+  speed: -25
+  isAngel: 0
 --- !u!114 &114789034321503106
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -267,6 +282,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba49a03cb2201ff498215d0c265bdd58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: 06d786e500411ee4e95df742a6284beb, type: 2}
+  rend: {fileID: 23534266070049812}
   amplitude: 1
   lc: {fileID: 114174107197403530}

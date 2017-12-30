@@ -26,7 +26,7 @@ public class CarSpawn : MonoBehaviour
         {
             timer = Random.Range(2.0f, timeBetween);            
             Vector3 newPos = transform.position;
-            newPos.y = 12.0f;
+            //newPos.y = 12.0f;
             Car c = null;
             int which = Random.Range(0, car.Length);
             c = (Car)Instantiate(car[which], newPos, transform.rotation);

@@ -38,6 +38,8 @@ GameObject:
   - component: {fileID: 4123358709220450}
   - component: {fileID: 65623852235382946}
   - component: {fileID: 54860071380954778}
+  - component: {fileID: 114625718687054938}
+  - component: {fileID: 114408058108260892}
   m_Layer: 0
   m_Name: tramoViasInfierno
   m_TagString: floor
@@ -297,3 +299,29 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.14, y: 1, z: 2.02}
   m_Center: {x: 0, y: 0.62, z: 0}
+--- !u!114 &114408058108260892
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1640939880187174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b2d5e463c868c1478119af3edb39941, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  distanceToDestroy: 100
+--- !u!114 &114625718687054938
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1640939880187174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b2d5e463c868c1478119af3edb39941, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  distanceToDestroy: 100

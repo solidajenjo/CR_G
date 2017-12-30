@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 54531870659839998}
   - component: {fileID: 114223509853083604}
   - component: {fileID: 65582684189388268}
+  - component: {fileID: 114828519899886862}
   m_Layer: 0
   m_Name: TrainSpawner
   m_TagString: Untagged
@@ -82,3 +83,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   train: {fileID: 54115547064170130, guid: 751a97e40b4631f42afa506c7a8a76a0, type: 2}
   timeBetween: 5
+--- !u!114 &114828519899886862
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1735004940744990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b2d5e463c868c1478119af3edb39941, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  distanceToDestroy: 100

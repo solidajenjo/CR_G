@@ -16,6 +16,7 @@ public class NukeParticle : MonoBehaviour {
 	void Start () {
         expansion = false;
         timer = duration;
+        height += transform.position.y;
 	}
 	
 	// Update is called once per frame

@@ -9,21 +9,21 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1021909507037716}
+  m_RootGameObject: {fileID: 1433658981492710}
   m_IsPrefabParent: 1
---- !u!1 &1021909507037716
+--- !u!1 &1433658981492710
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4989623814219568}
-  - component: {fileID: 33595281726126988}
-  - component: {fileID: 65327986644718438}
-  - component: {fileID: 23387534723395386}
-  - component: {fileID: 54453468908450410}
-  - component: {fileID: 114333654510083894}
+  - component: {fileID: 4762250756561546}
+  - component: {fileID: 33130545901229868}
+  - component: {fileID: 65949030406750158}
+  - component: {fileID: 23747171422546090}
+  - component: {fileID: 54938914323243104}
+  - component: {fileID: 114881751917926464}
   m_Layer: 0
   m_Name: NubeFlotante
   m_TagString: troncoFlotante
@@ -31,25 +31,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4989623814219568
+--- !u!4 &4762250756561546
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1021909507037716}
+  m_GameObject: {fileID: 1433658981492710}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.022736, y: 13.5, z: 236.2752}
+  m_LocalPosition: {x: 22, y: 8.841288, z: 14.248261}
   m_LocalScale: {x: 14, y: 2, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23387534723395386
+--- !u!23 &23747171422546090
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1021909507037716}
+  m_GameObject: {fileID: 1433658981492710}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -58,7 +58,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: fd858d09b65170a439e92fafa6564c1d, type: 2}
+  - {fileID: 2100000, guid: 124249d06bb20d2429751aedf3763f72, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -78,19 +78,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33595281726126988
+--- !u!33 &33130545901229868
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1021909507037716}
+  m_GameObject: {fileID: 1433658981492710}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54453468908450410
+--- !u!54 &54938914323243104
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1021909507037716}
+  m_GameObject: {fileID: 1433658981492710}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -100,31 +100,31 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!65 &65327986644718438
+--- !u!65 &65949030406750158
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1021909507037716}
+  m_GameObject: {fileID: 1433658981492710}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1.44, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114333654510083894
+--- !u!114 &114881751917926464
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1021909507037716}
+  m_GameObject: {fileID: 1433658981492710}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7be12203662776744ae8728458d720bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 29
   timeToLive: 10
-  amplitude: -40
+  amplitude: -10
   atenuator: 0.2
-  bounceTime: 0.3
+  bounceAmount: 9

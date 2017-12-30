@@ -20,7 +20,6 @@ public class AngelFeet : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("other.tag"+"ANGEL");
         if (other.tag == "Player")
         {
             anim.SetBool("prepare", true);

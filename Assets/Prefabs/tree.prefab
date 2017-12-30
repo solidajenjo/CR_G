@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 4750353700673918}
   - component: {fileID: 65934950136190860}
   - component: {fileID: 54998297401205808}
+  - component: {fileID: 114915260308311312}
   m_Layer: 0
   m_Name: tree
   m_TagString: obstacle
@@ -97,7 +98,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1905304425609214}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalPosition: {x: 40.96823, y: 396.09097, z: -330.9756}
   m_LocalScale: {x: 9.62, y: 14.89, z: 9.62}
   m_Children:
   - {fileID: 4441718296707802}
@@ -237,3 +238,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amplitude: 0.0009
+--- !u!114 &114915260308311312
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1905304425609214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b2d5e463c868c1478119af3edb39941, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  distanceToDestroy: 100

@@ -10,15 +10,20 @@ public class MainScreenGrass : MonoBehaviour {
     private Renderer renderer;
     private bool toggler;
     public Text arrow;
-    public Canvas menu, credits;
+    public Canvas menu, credits, loading;
+    public GameObject loadingBackground;
 
     private bool creditsOn;
 	// Use this for initialization
 	void Start () {
+        loadingBackground.SetActive(false);
+        loading.gameObject.SetActive(false);
         renderer = GetComponent<Renderer>();
         toggler = false;
         creditsOn = false;
         credits.gameObject.SetActive(false);
+        Time.timeScale = 1.0f;
+        Cursor.visible = false;
     }
 	
 	// Update is called once per frame
@@ -35,7 +40,13 @@ public class MainScreenGrass : MonoBehaviour {
         }
         if (Input.GetKeyDown("return") && !creditsOn)
         {
-            if (toggler) SceneManager.LoadScene("mainGame", LoadSceneMode.Single);
+            if (toggler)
+            {
+                loadingBackground.SetActive(true);
+                menu.gameObject.SetActive(false);
+                loading.gameObject.SetActive(true);
+                SceneManager.LoadScene("mainGame", LoadSceneMode.Single);
+            }            
             else
             {
                 menu.gameObject.SetActive(false);
@@ -43,7 +54,7 @@ public class MainScreenGrass : MonoBehaviour {
                 creditsOn = true;
             }
         }
-        if (Input.GetKeyDown(KeyCode.Escape) && creditsOn)
+        if (Input.GetKeyDown(KeyCode.Space) && creditsOn)
         {
             menu.gameObject.SetActive(true);
             credits.gameObject.SetActive(false);

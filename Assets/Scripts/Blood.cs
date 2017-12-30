@@ -32,6 +32,7 @@ public class Blood : MonoBehaviour
             if (collision.gameObject.name == "Water(Clone)" && this.tag != "kk"
                 && !pointSpawn.ContainsKey(contactPoint.z))
             {
+                contactPoint.y += 1.0f;               
                 pointSpawn.Add(contactPoint.z, true);
                 Instantiate(bloodWaterSpawn, contactPoint, Quaternion.Euler(0, 0, 0));
                 Debug.Log(Time.time + " " + contactPoint);

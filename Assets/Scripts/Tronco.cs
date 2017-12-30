@@ -6,10 +6,11 @@ public class Tronco : MonoBehaviour {
 
     public int speed;
     private float direction;
-    public float timeToLive, amplitude, atenuator, bounceTime;
-    private float timer, bouncingTimer, timePassed;
+    public float timeToLive, amplitude, atenuator, bounceAmount;
+    private float timer, bouncingCount, timePassed;
     private bool bouncing;
     private float sinus;
+    private float y;
     // Use this for initialization
     void Start () {
         timer = timeToLive;
@@ -25,14 +26,13 @@ public class Tronco : MonoBehaviour {
         }
         else
         {
-            timePassed += Time.deltaTime;
-            sinus = Mathf.Sin(timePassed * amplitude);
-            transform.Translate(speed * Time.deltaTime, sinus * atenuator, 0.0f);
-            bouncingTimer -= Time.deltaTime;
-            if (bouncingTimer <= 0)
+            bouncingCount -= 1.0f;
+            transform.Translate(speed * Time.deltaTime, Mathf.Sin(bouncingCount) * atenuator  , 0.0f);
+            if (bouncingCount <= 0.0f)
             {
                 bouncing = false;
-                sinus = 0.0f;
+                transform.position = new Vector3(transform.position.x,
+                    y, transform.position.z);
             }
         }
         timer -= Time.deltaTime;
@@ -49,8 +49,9 @@ public class Tronco : MonoBehaviour {
     }
     public void setBouncing()
     {
-        bouncingTimer = bounceTime;
+        bouncingCount = bounceAmount;
         bouncing = true;
         timePassed = 0;
+        y = transform.position.y;
     }
 }

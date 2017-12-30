@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 4373795224733680}
   - component: {fileID: 65536106979708318}
   - component: {fileID: 54956275126289426}
+  - component: {fileID: 114289920887803718}
   m_Layer: 0
   m_Name: tramoVias
   m_TagString: floor
@@ -639,6 +640,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightRenderer: {fileID: 23771625363183052}
   duration: 2
+--- !u!114 &114289920887803718
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1620650792551754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b2d5e463c868c1478119af3edb39941, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  distanceToDestroy: 100
 --- !u!114 &114380586293965894
 MonoBehaviour:
   m_ObjectHideFlags: 1

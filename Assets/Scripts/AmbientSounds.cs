@@ -7,7 +7,7 @@ public class AmbientSounds : MonoBehaviour {
     public AudioSource[] environmentAudios;
     public ScenarioSpawner scenarioSpawn;
     public Player player;
-    public Light dayLight, hellLight;
+    public Light dayLight, hellLight, heavenLight;
     private int waterPlaying, roadPlaying, grassPlaying;
     private bool hellPlaying, heavenPlaying;
     private bool fadeOut;
@@ -24,6 +24,7 @@ public class AmbientSounds : MonoBehaviour {
         hellPlaying = false;
         heavenPlaying = false;
         hellLight.enabled = false;
+        heavenLight.enabled = false;
     }
 
     // Update is called once per frame
@@ -51,8 +52,9 @@ public class AmbientSounds : MonoBehaviour {
             && !heavenPlaying)
         {
             environmentAudios[4].Play();
+            environmentAudios[3].Stop();
             heavenPlaying = true;
-            dayLight.enabled = true;
+            heavenLight.enabled = true;
             hellLight.enabled = false;
         }
     }

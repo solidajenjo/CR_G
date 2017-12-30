@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 65026082055659364}
   - component: {fileID: 23356095667229534}
   - component: {fileID: 54825758057470644}
+  - component: {fileID: 114762755523502158}
   m_Layer: 0
   m_Name: AsphaltUp
   m_TagString: asphalt
@@ -111,3 +112,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114762755523502158
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1679641096574512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b2d5e463c868c1478119af3edb39941, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  distanceToDestroy: 100

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 54784332268615550}
   - component: {fileID: 65942374851521298}
   - component: {fileID: 114251490362583572}
+  - component: {fileID: 114401409403051030}
   m_Layer: 0
   m_Name: VagonetaSpawner
   m_TagString: Untagged
@@ -85,3 +86,17 @@ MonoBehaviour:
   type: 1
   timeBetween: 3
   speed: 0
+  isRight: 0
+--- !u!114 &114401409403051030
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1941795084201664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b2d5e463c868c1478119af3edb39941, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  distanceToDestroy: 100

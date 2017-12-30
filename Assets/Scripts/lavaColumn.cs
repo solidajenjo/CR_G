@@ -9,6 +9,7 @@ public class lavaColumn : MonoBehaviour {
     public float speed;
     private bool bajando;
     private bool stoped;
+    public bool isAngel;
     private float z;
 	// Use this for initialization
 	void Start () {
@@ -29,9 +30,13 @@ public class lavaColumn : MonoBehaviour {
         if (timer <= 0 && !bajando)
         {
             bajando = true;
-            Debug.Log("BAJ "+ transform.localPosition.z+" "+z);
         }
-        else if (timer <= 0 && transform.localPosition.z >= z)
+        else if (timer <= 0 && transform.localPosition.z >= z && !isAngel)
+        {
+            bajando = false;
+            stoped = true;
+        }
+        else if (timer <= 0 && transform.localPosition.z <= z && isAngel)
         {
             bajando = false;
             stoped = true;
@@ -43,5 +48,14 @@ public class lavaColumn : MonoBehaviour {
     {
         timer = duration;
         stoped = false;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            Player player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Player>();
+            player.setFriedChicken();
+        }
     }
 }

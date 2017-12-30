@@ -6,6 +6,7 @@ public class CameraScript : MonoBehaviour {
 
     // Use this for initialization
     public Transform chickenTransform;
+    public Transform cameraRaiser;
     public float zOffset;
     public float xOffset;
     public float speed;
@@ -16,13 +17,25 @@ public class CameraScript : MonoBehaviour {
     public Player player;
     private float scoreWatchDog;
     public Text tip;
+    private float raiserYOffset;
     void Start () {
         scoreWatchDog = 3;
         tip.gameObject.SetActive(false);
-	}
+        raiserYOffset = cameraRaiser.transform.position.y - chickenTransform.position.y;
+
+    }
 
     // Update is called once per frame
     void Update() {
+        float xCam = Mathf.Clamp(chickenTransform.position.x, xMin, xMax);
+        zOffset = Mathf.Clamp(zOffset, zOffsetMin, zOffsetMax);
+        if (player.goingToHeaven)
+        {
+            cameraRaiser.position = new Vector3(cameraRaiser.position.x, 
+                chickenTransform.position.y + raiserYOffset,
+                cameraRaiser.position.z);
+            return;
+        }
         if (player.getScore() > 3 && zMover <= 0 && !player.isDead())
         {
             zOffset += Time.deltaTime * speed;
@@ -36,10 +49,8 @@ public class CameraScript : MonoBehaviour {
         {
             zMover = zInc;
             scoreWatchDog = player.getScore();
-        }
-        zOffset = Mathf.Clamp(zOffset, zOffsetMin, zOffsetMax);
-        //if (player.isDead()) return;
-        float xCam = Mathf.Clamp(chickenTransform.position.x, xMin, xMax);
+        }        
+        //if (player.isDead()) return;        
         transform.position = new Vector3(xCam + xOffset, transform.position.y, 
             chickenTransform.position.z + zOffset);
         if ((zOffset >= zOffsetMax || chickenTransform.position.x < xMin - xExtra || 

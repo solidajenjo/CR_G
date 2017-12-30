@@ -5,9 +5,13 @@ using UnityEngine;
 public class KickTrigger : MonoBehaviour {
 
     public Animator anim;
+    public lavaColumn lc;
+    public AudioSource audio;
+    private bool onlyOneKick;
     // Use this for initialization
     void Start()
     {
+        onlyOneKick = false;
     }
 
     // Update is called once per frame
@@ -18,10 +22,13 @@ public class KickTrigger : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && !onlyOneKick)
         {
+            onlyOneKick = true;
             anim.SetBool("kick", true);
-            Debug.Log("KIKIN");
+            lc.move();
+            lc.isAngel = true;
+            audio.Play();
             Player player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Player>();
             player.recieveKick();
         }
