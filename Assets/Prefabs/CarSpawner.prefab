@@ -99,6 +99,6 @@ MonoBehaviour:
   - {fileID: 114451437303708316, guid: 2e122cc3021abbb4780259119d219b4c, type: 2}
   - {fileID: 114265881054670538, guid: ea6a9cbe22263db4788b98cacf5f82b7, type: 2}
   type: 0
-  timeBetween: 4
+  timeBetween: 7
   speed: 0
   isRight: 0
