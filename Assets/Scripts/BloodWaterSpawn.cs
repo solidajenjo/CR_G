@@ -17,7 +17,9 @@ public class BloodWaterSpawn : MonoBehaviour {
         timer -= Time.deltaTime;
 		if (timer <= 0)
         {
-            Instantiate(waterBlood, transform.position, transform.rotation);
+            Vector3 pos = transform.position;
+            pos.y += 1.0f;
+            Instantiate(waterBlood, pos, transform.rotation);
             timer = timeBetween;
         }
 	}

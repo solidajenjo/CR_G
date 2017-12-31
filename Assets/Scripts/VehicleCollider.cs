@@ -20,8 +20,11 @@ public class VehicleCollider : MonoBehaviour {
         {
             try {
                 Player player = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<Player>();
-                player.setPlainChicken();
-                this.gameObject.SetActive(false);
+                if (!player.isGod())
+                {
+                    player.setPlainChicken();
+                    this.gameObject.SetActive(false);
+                }
             }
             catch
             {

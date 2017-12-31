@@ -26,7 +26,7 @@ public class CameraScript : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update() {        
         float xCam = Mathf.Clamp(chickenTransform.position.x, xMin, xMax);
         zOffset = Mathf.Clamp(zOffset, zOffsetMin, zOffsetMax);
         if (player.goingToHeaven)
@@ -36,7 +36,8 @@ public class CameraScript : MonoBehaviour {
                 cameraRaiser.position.z);
             return;
         }
-        if (player.getScore() > 3 && zMover <= 0 && !player.isDead())
+        if (player.getScore() > 3 && zMover <= 0 && !player.isDead()
+            && !player.isGod())
         {
             zOffset += Time.deltaTime * speed;
         }

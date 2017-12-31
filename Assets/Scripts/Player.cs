@@ -35,7 +35,7 @@ public class Player : MonoBehaviour {
     public VehicleCollider vehicleCollider;
     public GameObject plainChicken;
     public AudioSource chickenClucking;
-    public Text scoreText, hiscoreText, tutorialText, tipSwim, tipRoad, tipCam, tipWings, tipKFC;
+    public Text scoreText, hiscoreText, tutorialText, tipSwim, tipRoad, tipCam, tipWings, tipKFC, godModeText;
     private int score, hiscore;
     public GameObject gameOver;
     private float lastZ;
@@ -45,10 +45,11 @@ public class Player : MonoBehaviour {
     public int skipRate;
     private bool splash, falling;
     public bool goingToHeaven;
+    private bool inHeaven;
     public Light goingToHeavenLight;
     public float heavenY, ascensionSpeed;
-    public int heavenStart, hellStart;    
-
+    public int heavenStart, hellStart;
+    public bool godMode;
     void Start () {
         Cursor.visible = false;
         moving = (int)Movements.STILL;
@@ -82,8 +83,15 @@ public class Player : MonoBehaviour {
         splash = true;
         goingToHeavenLight.enabled = false;
         heavenStart = 100000;
+        inHeaven = false;
+        godMode = false;
+        godModeText.gameObject.SetActive(false);
     }
 
+    public bool isGod()
+    {
+        return godMode;
+    }
     public string getFloorMaterial()
     {
         return scenarioSpawn.getFloorMaterial((int)transform.position.z);
@@ -112,7 +120,8 @@ public class Player : MonoBehaviour {
                 goingToHeaven = false;
                 translator.position = new Vector3(translator.position.x,
                     heavenY, translator.position.z);
-                heavenStart = 1000000;                
+                heavenStart = 1000000;
+                inHeaven = true;             
             }
         }
         if ((scenarioSpawn.getFloorMaterial((int)transform.position.z) == "water"
@@ -122,13 +131,16 @@ public class Player : MonoBehaviour {
         {
             if (troncoTranslator == null && !dead)
             {
-                Debug.Log("DROWN " + scenarioSpawn.getFloorMaterial((int)transform.position.z));
-                if (scenarioSpawn.getFloorMaterial((int)transform.position.z) == "Lava"
-                    || scenarioSpawn.getFloorMaterial((int)transform.position.z) == "void") splash = false;
-                falling = true;
-                if (scenarioSpawn.getFloorMaterial((int)transform.position.z) == "Lava") setFriedChicken();
-                if (scenarioSpawn.getFloorMaterial((int)transform.position.z) == "void") tipWings.gameObject.SetActive(true);
-                setDrowned();
+                if (!godMode)
+                {
+                    Debug.Log("DROWN " + scenarioSpawn.getFloorMaterial((int)transform.position.z));
+                    if (scenarioSpawn.getFloorMaterial((int)transform.position.z) == "Lava"
+                        || scenarioSpawn.getFloorMaterial((int)transform.position.z) == "void") splash = false;
+                    falling = true;
+                    if (scenarioSpawn.getFloorMaterial((int)transform.position.z) == "Lava") setFriedChicken();
+                    if (scenarioSpawn.getFloorMaterial((int)transform.position.z) == "void") tipWings.gameObject.SetActive(true);
+                    setDrowned();
+                }
             }
         }
         if (frameCounter % skipRate == 0) ambientSoundController.updateEnvironment(transform.position.z); //OPTIMIZATION
@@ -158,6 +170,11 @@ public class Player : MonoBehaviour {
         }
         if (moving == (int)Movements.STILL && !goingToHeaven)
         {
+            if (Input.GetKeyUp(KeyCode.G))
+            {
+                godMode = !godMode;
+                godModeText.gameObject.SetActive(!godModeText.IsActive());
+            }
             if (Input.GetKey("up") && directions[0])
             {
                 chickenClucking.Play();
@@ -319,20 +336,23 @@ public class Player : MonoBehaviour {
     }
     public void setFriedChicken()
     {
-        Time.timeScale = 0.3f;
-        tipKFC.gameObject.SetActive(true);
-        Time.fixedDeltaTime = 0.02F * Time.timeScale;        
-        this.gameObject.SetActive(false);
-        dead = true;
-        gameOver.SetActive(true);
-        hiscore = PlayerPrefs.GetInt("high score", 0);
-        if (dead && hiscore < score)
+        if (!godMode)
         {
-            PlayerPrefs.SetInt("high score", score);
-            hiscoreText.text = "hi-score " + score.ToString();
-        }        
-        Vector3 feathersPos = new Vector3(transform.position.x, transform.position.y + 5.0f, transform.position.z);
-        for (int i = 0; i < feathersAmount * 3; ++i) Instantiate(feathers, feathersPos, transform.rotation);
+            Time.timeScale = 0.3f;
+            tipKFC.gameObject.SetActive(true);
+            Time.fixedDeltaTime = 0.02F * Time.timeScale;
+            this.gameObject.SetActive(false);
+            dead = true;
+            gameOver.SetActive(true);
+            hiscore = PlayerPrefs.GetInt("high score", 0);
+            if (dead && hiscore < score)
+            {
+                PlayerPrefs.SetInt("high score", score);
+                hiscoreText.text = "hi-score " + score.ToString();
+            }
+            Vector3 feathersPos = new Vector3(transform.position.x, transform.position.y + 5.0f, transform.position.z);
+            for (int i = 0; i < feathersAmount * 3; ++i) Instantiate(feathers, feathersPos, transform.rotation);
+        }
     }
     public void setPlainChicken()
     {
@@ -343,7 +363,9 @@ public class Player : MonoBehaviour {
         this.gameObject.SetActive(false);
         if (!tipCam.IsActive()) tipRoad.gameObject.SetActive(true);
         scenarioDestroyerWhenDead.gameObject.SetActive(true);
-        translator.position = new Vector3(translator.position.x, translator.position.y + 0.8f,
+        float offset = 1.0f;
+        if (!inHeaven) offset = -1.0f;
+        translator.position = new Vector3(translator.position.x, translator.position.y + 0.8f + offset,
             translator.position.z);
         Vector3 feathersPos = new Vector3(translator.position.x, translator.position.y + 5.0f, translator.position.z);
         for (int i = 0; i < feathersAmount; ++i) Instantiate(feathers, feathersPos, transform.rotation);

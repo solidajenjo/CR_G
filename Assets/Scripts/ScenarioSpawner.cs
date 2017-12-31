@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class ScenarioSpawner : MonoBehaviour {
 
     public Rigidbody[] lanes;
@@ -10,8 +11,10 @@ public class ScenarioSpawner : MonoBehaviour {
     public Rigidbody carSpawner, wagonSpawner, avionSpawner;
     public Rigidbody hellEnd;
     public Player player;
+    public Text correction;
     private float lastZ;
     private int lastLane;
+    private int frameCounter;
     public int sizeOfLane, obstacleSpawnPossibility;
     private int[] materialOfTheLane;
     public int minSpeed, maxSpeed;
@@ -27,17 +30,21 @@ public class ScenarioSpawner : MonoBehaviour {
     // Use this for initialization
     void Start () {
         scenario = 0;
+        correction.gameObject.SetActive(false);
+        frameCounter = 0;
         hellEndDeployed = false;
         lastZ = transform.position.z;
         lastLane = 4;
-        materialOfTheLane = new int[1000];
+        materialOfTheLane = new int[3000];
         firstHeaven = -1;
         firstHell = -1;
-        for (int i = 0; i < 1000; ++i) materialOfTheLane[i] = (int)LaneTypes.GRASS;
+        for (int i = 0; i < 3000; ++i) materialOfTheLane[i] = -1;
     }
 	
 	// Update is called once per frame
 	void Update () {
+        frameCounter++;
+ 
         if (Input.GetKeyDown(KeyCode.Escape)) SceneManager.LoadScene("mainMenu", LoadSceneMode.Single);
         if (player.getScore() == hellStart)
         {
@@ -418,11 +425,8 @@ public class ScenarioSpawner : MonoBehaviour {
                         for (int i = 0; i < amount; ++i)
                         {
                             int x = Random.Range(0, 100);
-                            for (int j = leftMargin; j < rightMargin; j += 40)
-                            {
-                                newPos.x = j;
-                                Instantiate(lanes[type], newPos + increment * i, transform.rotation);
-                            }
+                            
+                            Instantiate(lanes[type], newPos + increment * i, transform.rotation);
                             materialOfTheLane[((int)(newPos + increment * i).z % 1000) / 10] = type;
                             if (spawn)
                             {
