@@ -187,7 +187,7 @@ public class Player : MonoBehaviour {
                 if (destination.x % 10 != 0 
                     && scenarioSpawn.getFloorMaterial((int)destination.z) != "water"
                     && scenarioSpawn.getFloorMaterial((int)destination.z) != "Lava"
-                    && scenarioSpawn.getFloorMaterial((int)destination.z) != "void") //Corrección al saltar desde un tronco fuera del agua
+                    && scenarioSpawn.getFloorMaterial((int)destination.z) != "void") //Corrección al saltar desde un tronco, roca o nube fuera del agua, lava o vacío
                    
                 {
                     float xDisp = destination.x % 10;
@@ -418,12 +418,18 @@ public class Player : MonoBehaviour {
             lateralSpeed = other.GetComponent<Tronco>().getSpeed();
             other.GetComponent<Tronco>().setBouncing();
         }
-        
+        else if (other.tag == "rocaFlotante")
+        {
+            troncoTranslator = other.transform;
+            lateralSpeed = other.GetComponent<Roca>().getSpeed();
+            other.GetComponent<Roca>().setBouncing();
+        }
+
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "troncoFlotante")
+        if (other.tag == "troncoFlotante" || other.tag == "rocaFlotante")
         {
             troncoTranslator = null;
         }

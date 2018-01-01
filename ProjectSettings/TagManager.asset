@@ -17,6 +17,7 @@ TagManager:
   - kk
   - dirt
   - Lava
+  - rocaFlotante
   layers:
   - Default
   - TransparentFX

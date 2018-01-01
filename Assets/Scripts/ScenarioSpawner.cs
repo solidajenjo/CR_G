@@ -7,7 +7,7 @@ public class ScenarioSpawner : MonoBehaviour {
 
     public Rigidbody[] lanes;
     public Rigidbody[] obstacles;
-    public Rigidbody trainSpawner, troncoSpawner;
+    public Rigidbody trainSpawner, troncoSpawner, rocaSpawner;
     public Rigidbody carSpawner, wagonSpawner, avionSpawner;
     public Rigidbody hellEnd;
     public Player player;
@@ -283,20 +283,20 @@ public class ScenarioSpawner : MonoBehaviour {
                             {
                                 if (i % 2 == 0 && i > 0)
                                 {
-                                    Vector3 troncoSpawnPos = newPos;
+                                    Vector3 rocaSpawnPos = newPos;
                                     Rigidbody ts;
-                                    ts = (Rigidbody)Instantiate(troncoSpawner, new Vector3(leftMargin, 2.0f, (troncoSpawnPos + increment * i).z), transform.rotation);
-                                    ts.GetComponent<TroncoSpawn>().setDirection(1.0f);
-                                    ts.GetComponent<TroncoSpawn>().speed = Random.Range(minSpeed, maxSpeed);
+                                    ts = (Rigidbody)Instantiate(rocaSpawner, new Vector3(leftMargin, 2.0f, (rocaSpawnPos + increment * i).z), transform.rotation);
+                                    ts.GetComponent<RocaSpawn>().setDirection(1.0f);
+                                    ts.GetComponent<RocaSpawn>().speed = Random.Range(minSpeed, maxSpeed);
                                 }
                                 else if (i > 0)
                                 {
-                                    Vector3 troncoSpawnPos = newPos;
+                                    Vector3 rocaSpawnPos = newPos;
                                     Quaternion rot = Quaternion.Euler(0.0f, 180.0f, 0.0f);
                                     Rigidbody ts;
-                                    ts = (Rigidbody)Instantiate(troncoSpawner, new Vector3(rightMargin, 2.0f, (troncoSpawnPos + increment * i).z), rot);
-                                    ts.GetComponent<TroncoSpawn>().setDirection(-1.0f);
-                                    ts.GetComponent<TroncoSpawn>().speed = Random.Range(minSpeed, maxSpeed);
+                                    ts = (Rigidbody)Instantiate(rocaSpawner, new Vector3(rightMargin, 2.0f, (rocaSpawnPos + increment * i).z), rot);
+                                    ts.GetComponent<RocaSpawn>().setDirection(-1.0f);
+                                    ts.GetComponent<RocaSpawn>().speed = Random.Range(minSpeed, maxSpeed);
                                 }
                             }
                         }
